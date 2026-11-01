@@ -179,10 +179,10 @@
         <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-white/5 space-y-2">
           <span class="font-bold text-slate-700 dark:text-slate-300 block">Kiraan Anggaran Kompaun Kebersihan:</span>
           <div class="grid grid-cols-2 gap-2">
-            <input type="number" inputmode="numeric" id="stealthInputA" placeholder="Bil. Kesalahan" value="2" class="p-2.5 rounded-xl bg-white dark:bg-black/30 border border-slate-200 dark:border-slate-800 text-xs">
-            <input type="number" inputmode="numeric" id="stealthInputB" placeholder="Kadar Asas (RM)" value="150" class="p-2.5 rounded-xl bg-white dark:bg-black/30 border border-slate-200 dark:border-slate-800 text-xs">
+            <input type="number" inputmode="numeric" id="stealthInputA" placeholder="Bil. Kesalahan" value="2" class="p-2.5 rounded-xl bg-white dark:bg-black/30 border border-slate-200 dark:border-slate-800">
+            <input type="number" inputmode="numeric" id="stealthInputB" placeholder="Kadar Asas (RM)" value="150" class="p-2.5 rounded-xl bg-white dark:bg-black/30 border border-slate-200 dark:border-slate-800">
           </div>
-          <button onclick="calculateStealthTotal()" class="touch-target-h w-full py-2.5 bg-slate-800 text-white rounded-xl font-bold">Kira Jumlah</button>
+          <button onclick="calculateStealthTotal()" class="touch-target-h w-full py-2.5 bg-slate-800 text-white rounded-xl font-bold">Kira Jumlah Pengeluaran</button>
           <div class="pt-2 text-center text-xs font-bold text-botanic-600 dark:text-emerald-400" id="stealthCalcResult">Jumlah: RM 300.00</div>
         </div>
       </div>
@@ -334,7 +334,7 @@
     </div>
   </div>
 
-  <!-- 4. MODALS -->
+  <!-- 4. MODALS (ANALISIS, CARIAN & KUIZ LENGKAP) -->
   <div id="analyticsModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
     <div id="analyticsModalCard" class="relative w-full max-w-lg app-card rounded-[28px] p-5 sm:p-6 space-y-4 transform transition-transform duration-200 scale-95 max-h-[88vh] overflow-y-auto custom-scrollbar">
       <div class="flex items-center justify-between border-b border-emerald-900/10 dark:border-white/10 pb-3">
@@ -347,6 +347,7 @@
         </div>
         <button onclick="closeAnalyticsModal()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500"><i data-lucide="x" class="w-4 h-4"></i></button>
       </div>
+
       <div class="p-4 rounded-2xl app-card-nested space-y-2.5">
         <div class="flex items-center justify-between">
           <span class="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5"><i data-lucide="book-marked" class="w-3.5 h-3.5 text-botanic-600"></i> Kemajuan Bacaan Nota (17 Topik)</span>
@@ -355,6 +356,32 @@
         <div class="w-full h-3 rounded-full bg-slate-200 dark:bg-black/40 overflow-hidden p-0.5">
           <div id="analyticsReadingProgressBar" class="h-full rounded-full bg-botanic-600 dark:bg-emerald-500 transition-all duration-500" style="width: 0%"></div>
         </div>
+      </div>
+
+      <div class="p-4 rounded-2xl app-card-nested space-y-3">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5"><i data-lucide="award" class="w-3.5 h-3.5 text-amberwarm-500"></i> Prestasi Kuiz (23 Soalan)</span>
+          <span id="analyticsQuizGradeBadge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amberwarm-500/10 text-amberwarm-500 border border-amberwarm-500/20">BELUM SELESAI</span>
+        </div>
+        <div class="space-y-1.5">
+          <div class="w-full h-3 rounded-full bg-slate-200 dark:bg-black/40 overflow-hidden flex">
+            <div id="barCorrect" class="h-full bg-botanic-600 dark:bg-emerald-500 transition-all duration-500" style="width: 0%"></div>
+            <div id="barWrong" class="h-full bg-rose-500 transition-all duration-500" style="width: 0%"></div>
+            <div id="barUnanswered" class="h-full bg-slate-300 dark:bg-slate-700 transition-all duration-500" style="width: 100%"></div>
+          </div>
+          <div class="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-1">
+            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-botanic-600"></span> Betul: <strong id="lblCorrectCount">0</strong></span>
+            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-rose-500"></span> Salah: <strong id="lblWrongCount">0</strong></span>
+            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-slate-400"></span> Baki: <strong id="lblUnansweredCount">23</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-2 flex items-center justify-between gap-2 border-t border-slate-200 dark:border-white/10">
+        <button onclick="resetAllProgress()" class="text-xs text-rose-500 hover:underline font-semibold">Tetapkan Semula (Reset)</button>
+        <button onclick="closeAnalyticsModal(); openQuizModal();" class="px-4 py-2 bg-botanic-600 text-white rounded-xl text-xs font-bold hover:bg-botanic-500 transition flex items-center gap-1.5 shadow-xs">
+          <i data-lucide="play" class="w-3.5 h-3.5"></i> Buka Kuiz
+        </button>
       </div>
     </div>
   </div>
@@ -378,6 +405,7 @@
     </div>
   </div>
 
+  <!-- MODAL KUIZ AUDIT PENUH (23 SOALAN) -->
   <div id="quizModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
     <div id="quizModalCard" class="relative w-full max-w-lg app-card rounded-[28px] p-5 space-y-3.5 transform transition-transform duration-200 scale-95">
       <div class="flex items-center justify-between border-b border-emerald-900/10 dark:border-white/10 pb-3">
@@ -385,16 +413,39 @@
           <div class="w-7 h-7 rounded-full bg-amberwarm-500/10 text-amberwarm-500 flex items-center justify-center"><i data-lucide="help-circle" class="w-4 h-4"></i></div>
           <h3 class="text-sm font-bold uppercase tracking-wide text-slate-900 dark:text-slate-100">Kuiz Latih Tubi UMI</h3>
         </div>
-        <button onclick="closeQuizModal()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500"><i data-lucide="x" class="w-4 h-4"></i></button>
+        <div class="flex items-center gap-2">
+          <span id="quizScoreDisplay" class="text-xs font-bold text-amberwarm-500 bg-amberwarm-500/10 px-2.5 py-1 rounded-full border border-amberwarm-500/20">0 / 0</span>
+          <button onclick="closeQuizModal()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500"><i data-lucide="x" class="w-4 h-4"></i></button>
+        </div>
       </div>
-      <div class="space-y-3 text-center py-4">
-        <p class="text-sm font-semibold text-slate-700 dark:text-slate-300">Modul kuiz berintegrasi dengan 17 topik fardu ain & standard audit.</p>
-        <button onclick="closeQuizModal()" class="touch-target-h px-5 py-2.5 bg-botanic-600 text-white rounded-xl text-xs font-bold hover:bg-botanic-700 transition">Kembali Ke Nota</button>
+
+      <div class="space-y-3">
+        <div class="flex items-center justify-between text-[11px] text-slate-400">
+          <span id="quizCategoryBadge" class="font-bold text-botanic-600 dark:text-botanic-300">Kategori</span>
+          <span id="quizIndexBadge">Soalan 1 / 23</span>
+        </div>
+
+        <div id="quizQuestionText" class="app-note-heading font-bold leading-relaxed min-h-[42px] text-slate-900 dark:text-slate-100 text-left"></div>
+        <div id="quizOptionsContainer" class="space-y-2 max-h-[42vh] overflow-y-auto no-scrollbar"></div>
+        <div id="quizFeedbackBox" class="hidden p-3 rounded-2xl text-xs leading-relaxed border transition-all text-left"></div>
+      </div>
+
+      <div class="flex items-center justify-between gap-2 pt-3 border-t border-emerald-900/10 dark:border-white/10">
+        <div class="flex items-center gap-2">
+          <button onclick="checkQuizAnswer()" id="btnCheckAnswer" class="text-xs font-bold px-4 py-2 rounded-xl bg-botanic-600 hover:bg-botanic-500 text-white transition disabled:opacity-40 shadow-xs">Semak</button>
+          <button onclick="revealQuizAnswer()" id="btnRevealAnswer" class="text-xs font-semibold px-3 py-2 rounded-xl app-card text-amberwarm-500 hover:text-amberwarm-600 transition">Jawapan</button>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="pickRandomQuizQuestion()" title="Soalan Rawak" class="w-8 h-8 rounded-xl app-card flex items-center justify-center text-slate-500"><i data-lucide="shuffle" class="w-3.5 h-3.5"></i></button>
+          <button onclick="nextQuizQuestion()" class="text-xs font-bold px-3.5 py-2 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 transition flex items-center gap-1 shadow-xs">
+            <span>Seterusnya</span><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Skrip Terbina Dalam Lengkap -->
+  <!-- Skrip Terbina Dalam Lengkap (17 Topik & 23 Kuiz) -->
   <script>
     const auditTopicsData = [
       {
@@ -403,7 +454,18 @@
         title: "Latar Belakang & Tarikh UMI",
         icon: "landmark",
         badge: "Sejarah Asas",
-        bodyHtml: `<div class="space-y-2.5 editorial-body"><div class="p-3.5 rounded-2xl app-card-nested"><span class="font-bold text-slate-900 dark:text-slate-100 block mb-1">🗓️ Tahun 1990: Gagasan MBI</span><p class="text-slate-600 dark:text-slate-300">Mula diperkenalkan pada <strong>tahun 1990</strong> di bawah dasar pentadbiran <em>"Membangun Bersama Islam" (MBI)</em> pimpinan Almarhum Tuan Guru Dato' Nik Abdul Aziz Nik Mat.</p></div></div>`
+        bodyHtml: `
+          <div class="space-y-2.5 editorial-body">
+            <div class="p-3.5 rounded-2xl app-card-nested">
+              <span class="font-bold text-slate-900 dark:text-slate-100 block mb-1">🗓️ Tahun 1990: Gagasan MBI</span>
+              <p class="text-slate-600 dark:text-slate-300">Mula diperkenalkan pada <strong>tahun 1990</strong> di bawah dasar pentadbiran <em>"Membangun Bersama Islam" (MBI)</em> pimpinan Almarhum Tuan Guru Dato' Nik Abdul Aziz Nik Mat bagi menyerapkan nilai syariah dalam seluruh agensi kerajaan negeri.</p>
+            </div>
+            <div class="p-3.5 rounded-2xl app-card-highlight text-botanic-900 dark:text-botanic-200">
+              <span class="font-bold text-botanic-700 dark:text-emerald-300 block mb-1">📘 Tahun 2020: Manual Pelaksanaan & Audit UMI</span>
+              <p>Kerajaan Negeri Kelantan menguatkuasakan <strong>Manual Pelaksanaan Prinsip UMI (Tahun 2020)</strong> sebagai dokumen rujukan standard rasmi bagi latihan berkala, pematuhan kakitangan, dan pensijilan audit integriti MPKB-BRI.</p>
+            </div>
+          </div>
+        `
       },
       {
         id: "sec-bri",
@@ -411,7 +473,35 @@
         title: "Falsafah Bandar Raya Islam (BRI) & Budaya Kerja",
         icon: "building-2",
         badge: "1 Okt 2005",
-        bodyHtml: `<div class="space-y-3 editorial-body"><div class="p-3.5 rounded-2xl app-card-highlight"><p class="text-botanic-900 dark:text-botanic-200">Kota Bharu diisytiharkan sebagai <strong>Bandar Raya Islam pada 1 Oktober 2005</strong> di bawah wawasan pentadbiran MBI.</p></div></div>`
+        bodyHtml: `
+          <div class="space-y-3 editorial-body">
+            <div class="p-3.5 rounded-2xl app-card-highlight">
+              <div class="font-bold text-botanic-700 dark:text-emerald-300 mb-1 flex items-center justify-between">
+                <span>📅 Pengisytiharan Bandar Raya Islam:</span>
+                <span class="app-sub-text bg-botanic-600 text-white px-2.5 py-0.5 rounded-full font-semibold">1 Oktober 2005</span>
+              </div>
+              <p class="text-botanic-900 dark:text-botanic-200">Kota Bharu diisytiharkan sebagai <strong>Bandar Raya Islam pada 1 Oktober 2005</strong> di bawah wawasan pentadbiran MBI bagi menterjemahkan syariat Islam dalam tadbir urus fizikal, perbandaran, sosial, dan ekonomi rakyat.</p>
+            </div>
+            <div class="p-3.5 rounded-2xl app-card-nested">
+              <strong class="block mb-2 text-slate-900 dark:text-slate-100 uppercase app-sub-text tracking-wide">🌟 5 Kesejahteraan Bandar Raya Islam (BRI):</strong>
+              <ol class="list-decimal editorial-list text-slate-600 dark:text-slate-300 space-y-1.5">
+                <li><strong>Kesejahteraan Akidah:</strong> Penghayatan tauhid, membanteras khurafat, azan berkumandang di premis awam.</li>
+                <li><strong>Kesejahteraan Akhlak:</strong> Menutup aurat, adab sopan, tiada hiburan melampau dan maksiat terbuka.</li>
+                <li><strong>Kesihatan & Kebersihan:</strong> Kebersihan sebahagian iman; pasar dan premis perniagaan bersih dan suci.</li>
+                <li><strong>Kesejahteraan Ekonomi:</strong> Muamalat bebas riba, timbangan jujur, sokongan perniagaan halal patuh syariah.</li>
+                <li><strong>Kesejahteraan Sosial & Keselamatan:</strong> Bandar selamat, kebajikan fakir miskin sentiasa terbela, dan perpaduan ummah.</li>
+              </ol>
+            </div>
+            <div class="p-3.5 rounded-2xl app-card-nested space-y-1.5">
+              <strong class="block text-slate-900 dark:text-slate-100 uppercase app-sub-text mb-1">🤝 Budaya Kerja Islamik di MPKB-BRI:</strong>
+              <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-1">
+                <li><strong>Konsep Syura:</strong> Mengutamakan perbincangan muafakat dalam membuat keputusan dasar perbandaran.</li>
+                <li><strong>Konsep Hisbah:</strong> Pengauditan kendiri (*self-accountability*), amar makruf nahi mungkar, dan ketegasan penguatkuasaan adil.</li>
+                <li><strong>Konsep Ihsan di Kaunter:</strong> Melayani pelanggan secara mesra, berlemah-lembut, mempermudahkan urusan rakyat, dan menyempurnakan kerja seolah-olah melihat Allah.</li>
+              </ul>
+            </div>
+          </div>
+        `
       },
       {
         id: "sec-umi",
@@ -419,15 +509,406 @@
         title: "Teras UMI (3 Prinsip)",
         icon: "sparkles",
         badge: "Teras Utama",
-        bodyHtml: `<div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10"><table class="responsive-table w-full text-left border-collapse editorial-body"><tbody class="divide-y divide-slate-100 dark:divide-white/5"><tr><td class="py-2.5 px-3.5 font-bold text-botanic-600">Ubudiyyah</td><td class="py-2.5 px-3.5">Pengabdian diri kepada Allah SWT. Niat bekerja sebagai ibadah.</td></tr><tr><td class="py-2.5 px-3.5 font-bold text-botanic-600">Mas'uliyyah</td><td class="py-2.5 px-3.5">Kebertanggungjawaban dan amanah. Sedar segala tugas akan dihisab.</td></tr><tr><td class="py-2.5 px-3.5 font-bold text-botanic-600">Itqan</td><td class="py-2.5 px-3.5">Ketelitian, ketepatan, dan kualiti tinggi dalam tugasan.</td></tr></tbody></table></div>`
+        bodyHtml: `
+          <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
+            <table class="responsive-table w-full text-left border-collapse editorial-body">
+              <thead>
+                <tr class="bg-botanic-50 dark:bg-botanic-900/30 text-botanic-800 dark:text-botanic-200 border-b border-slate-200 dark:border-white/10">
+                  <th class="py-2.5 px-3.5 font-semibold w-1/3">Prinsip</th>
+                  <th class="py-2.5 px-3.5 font-semibold">Penghayatan & Maksud</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-white/5">
+                <tr>
+                  <td class="py-2.5 px-3.5 font-bold text-botanic-600 dark:text-emerald-400 align-top">Ubudiyyah</td>
+                  <td class="py-2.5 px-3.5 leading-relaxed text-slate-600 dark:text-slate-300">Pengabdian diri kepada Allah SWT. Niat bekerja secara ikhlas kerana Allah sebagai ibadah semata-mata.</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-3.5 font-bold text-botanic-600 dark:text-emerald-400 align-top">Mas'uliyyah</td>
+                  <td class="py-2.5 px-3.5 leading-relaxed text-slate-600 dark:text-slate-300">Kebertanggungjawaban dan amanah. Sedar segala tugas, kuasa, dan masa akan dipersoal serta dihisab di akhirat.</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-3.5 font-bold text-botanic-600 dark:text-emerald-400 align-top">Itqan</td>
+                  <td class="py-2.5 px-3.5 leading-relaxed text-slate-600 dark:text-slate-300">Ketelitian, ketepatan, dan kualiti tinggi. Melakukan kerja dengan cekap, kemas, berdisiplin, dan sifar ralat.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        `
+      },
+      {
+        id: "sec-harian",
+        cluster: "dasar",
+        title: "Penghayatan UMI Di Tempat Kerja (MPKB-BRI)",
+        icon: "briefcase",
+        badge: "Praktikal",
+        bodyHtml: `
+          <div class="space-y-2 editorial-body">
+            <div class="p-3.5 rounded-2xl app-card-nested border-l-4 !border-l-botanic-500">
+              <span class="font-bold text-botanic-700 dark:text-emerald-300 flex items-center gap-1.5 mb-1">Ubudiyyah di Pejabat:</span>
+              <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-0.5">
+                <li>Mulakan tugas harian dengan niat ikhlas ibadah kerana Allah SWT.</li>
+                <li>Menjaga solat pada waktunya serta memelihara adab syariat.</li>
+                <li>Menghindari sifat riak dan perbuatan curi tulang masa.</li>
+              </ul>
+            </div>
+            <div class="p-3.5 rounded-2xl app-card-nested border-l-4 !border-l-amberwarm-500">
+              <span class="font-bold text-amberwarm-500 flex items-center gap-1.5 mb-1">Mas'uliyyah di Pejabat:</span>
+              <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-0.5">
+                <li>Menepati waktu masuk, rehat, dan amanah dalam mencatat pergerakan.</li>
+                <li>Menjaga kerahsiaan fail kerajaan dan tidak menyalahgunakan aset rasmi.</li>
+              </ul>
+            </div>
+            <div class="p-3.5 rounded-2xl app-card-nested border-l-4 !border-l-terracotta-500">
+              <span class="font-bold text-terracotta-500 flex items-center gap-1.5 mb-1">Itqan di Pejabat:</span>
+              <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-0.5">
+                <li>Menyiapkan tugasan dengan teliti, kemas, dan sifar ralat.</li>
+                <li>Menyusun fail meja, minit mesyuarat, dan rekod perbandaran dengan teratur.</li>
+              </ul>
+            </div>
+          </div>
+        `
       },
       {
         id: "sec-integriti",
         cluster: "dasar",
-        title: "Integriti & Keberkatan Rezeki",
+        title: "Integriti, Keberkatan Rezeki & Etika Penjawat Awam",
         icon: "shield-check",
         badge: "Teras Halal",
-        bodyHtml: `<div class="space-y-2.5 editorial-body"><div class="p-3 rounded-2xl app-card-nested"><p class="text-slate-600 dark:text-slate-300">Gaji hasil kerja jujur, amanah masa, mematuhi SOP majlis, dan bebas rasuah.</p></div></div>`
+        bodyHtml: `
+          <div class="space-y-2.5 editorial-body">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <div class="p-3 rounded-2xl app-card-nested">
+                <strong class="text-botanic-600 dark:text-emerald-400 block mb-1">🟢 Rezeki Halal:</strong>
+                <p class="text-slate-600 dark:text-slate-300">Gaji hasil kerja jujur, amanah masa, mematuhi SOP majlis, dan tiada penipuan log tugas.</p>
+              </div>
+              <div class="p-3 rounded-2xl app-card-nested">
+                <strong class="text-amberwarm-500 block mb-1">🟡 Syubhah:</strong>
+                <p class="text-slate-600 dark:text-slate-300">Guna waktu pejabat untuk urusan peribadi, menerima hadiah daripada kontraktor berkepentingan.</p>
+              </div>
+              <div class="p-3 rounded-2xl app-card-nested">
+                <strong class="text-rose-500 block mb-1">🔴 Haram:</strong>
+                <p class="text-slate-600 dark:text-slate-300">Rasuah, membuat tuntutan elaun palsu (*false claims*), atau mencuri harta majlis.</p>
+              </div>
+            </div>
+            <div class="p-3.5 rounded-2xl app-card-nested leading-relaxed">
+              <strong class="block text-slate-900 dark:text-slate-100 uppercase mb-1.5">👔 Etika Aurat & Batas Ikhtilat di Pejabat:</strong>
+              <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-1">
+                <li><strong>Aurat Lelaki:</strong> Antara pusat hingga lutut. Pakaian kemas, bersopan dan berkasut.</li>
+                <li><strong>Aurat Wanita:</strong> Seluruh tubuh kecuali muka dan dua pergelangan tangan. Longgar, bertudung melepasi dada, tidak jarang dan tidak ketat.</li>
+                <li><strong>Batas Ikhtilat:</strong> Menjaga pandangan, tiada gurauan melampau, dan tidak berdua-duaan di bilik tertutup (khalwat).</li>
+              </ul>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: "sec-akidah-tasawuf",
+        cluster: "akidah",
+        title: "Sifat Para Rasul & Akhlak Penjawat Awam",
+        icon: "gem",
+        badge: "Tasawuf",
+        bodyHtml: `
+          <div class="space-y-2.5 editorial-body">
+            <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
+              <table class="responsive-table w-full text-left border-collapse">
+                <thead>
+                  <tr class="bg-botanic-50 dark:bg-botanic-900/30 text-botanic-800 dark:text-botanic-200 border-b border-slate-200 dark:border-white/10">
+                    <th class="py-2 px-3 font-semibold">Sifat Wajib</th>
+                    <th class="py-2 px-3 font-semibold">Sifat Mustahil</th>
+                    <th class="py-2 px-3 font-semibold">Aplikasi di MPKB-BRI</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 dark:divide-white/5 text-slate-600 dark:text-slate-300">
+                  <tr>
+                    <td class="py-2 px-3 font-bold text-botanic-600 dark:text-emerald-400">1. Siddiq (Benar)</td>
+                    <td class="py-2 px-3 text-rose-500">Kazib (Dusta)</td>
+                    <td class="py-2 px-3">Bercakap benar dalam laporan dan penyata rasmi.</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 px-3 font-bold text-botanic-600 dark:text-emerald-400">2. Amanah (Jujur)</td>
+                    <td class="py-2 px-3 text-rose-500">Khianat (Pecah Amanah)</td>
+                    <td class="py-2 px-3">Menjaga wang majlis, aset dan kerahsiaan data.</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 px-3 font-bold text-botanic-600 dark:text-emerald-400">3. Tabligh (Menyampaikan)</td>
+                    <td class="py-2 px-3 text-rose-500">Kitman (Menyembunyikan)</td>
+                    <td class="py-2 px-3">Menyampaikan dasar dan arahan kerja dengan jelas.</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 px-3 font-bold text-botanic-600 dark:text-emerald-400">4. Fatanah (Bijaksana)</td>
+                    <td class="py-2 px-3 text-rose-500">Baladah (Lembap)</td>
+                    <td class="py-2 px-3">Cekap menyelesaikan aduan rakyat secara bijak.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
+              <div class="p-3 rounded-2xl app-card-nested">
+                <strong class="text-botanic-600 dark:text-emerald-400 block mb-1">🌿 Mahmudah (Terpuji):</strong>
+                <p class="text-slate-600 dark:text-slate-300">Ikhlas, Sabar melayan aduan, Syukur, dan Tawaduk sesama rakan sekerja.</p>
+              </div>
+              <div class="p-3 rounded-2xl app-card-nested">
+                <strong class="text-rose-500 block mb-1">⚠️ Mazmumah (Tercela):</strong>
+                <p class="text-slate-600 dark:text-slate-300">Riak (menunjuk-nunjuk amal), Ujub (kagum diri), Hasad Dengki, dan Ghibah (mengumpat).</p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: "sec-fardhu",
+        cluster: "akidah",
+        title: "Fardhu Ain vs Fardhu Kifayah",
+        icon: "scale",
+        badge: "Hukum",
+        bodyHtml: `
+          <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
+            <table class="responsive-table w-full text-left border-collapse editorial-body">
+              <thead>
+                <tr class="bg-botanic-50 dark:bg-botanic-900/30 text-botanic-800 dark:text-botanic-200 border-b border-slate-200 dark:border-white/10">
+                  <th class="py-2 px-3 font-semibold w-28">Kategori</th>
+                  <th class="py-2 px-3 font-semibold">Takrif & Contoh</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-white/5">
+                <tr>
+                  <td class="py-2.5 px-3 font-semibold align-top text-botanic-600 dark:text-emerald-400">Fardhu Ain</td>
+                  <td class="py-2.5 px-3 leading-relaxed text-slate-600 dark:text-slate-300">
+                    Wajib atas <strong>setiap individu mukallaf</strong>. Berdosa jika ditinggalkan.<br>
+                    <em class="text-slate-400">Contoh: Solat 5 waktu, puasa Ramadan, tauhid, menutup aurat.</em>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-3 font-semibold align-top text-amberwarm-500">Fardhu Kifayah</td>
+                  <td class="py-2.5 px-3 leading-relaxed text-slate-600 dark:text-slate-300">
+                    Wajib ke atas <strong>kumpulan masyarakat</strong>. Gugur jika sebahagian telah melaksanakannya.<br>
+                    <em class="text-slate-400">Contoh: Solat jenazah, urusan tadbir perbandaran awam, kepakaran perubatan.</em>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        `
+      },
+      {
+        id: "sec-hafazan",
+        cluster: "akidah",
+        title: "Bacaan Harian Solat & Surah Al-Asr",
+        icon: "scroll",
+        badge: "Hafazan",
+        bodyHtml: `
+          <div class="space-y-2.5 editorial-body">
+            <div class="p-3.5 rounded-2xl app-card-nested">
+              <strong class="text-amberwarm-500 block mb-1">🤲 8 Permintaan Duduk Antara Dua Sujud:</strong>
+              <p class="font-mono bg-botanic-50 dark:bg-black/40 p-2.5 rounded-xl mb-2 text-center text-botanic-800 dark:text-botanic-200">
+                "Rabbighfirli, warhamni, wajburni, warfa'ni, warzuqni, wahdini, wa'afini, wa'fu 'anni"
+              </p>
+              <ol class="list-decimal editorial-list grid grid-cols-1 sm:grid-cols-2 gap-1 text-slate-600 dark:text-slate-300">
+                <li>Ampunkan dosaku</li>
+                <li>Rahmati daku</li>
+                <li>Cukupkan kekuranganku</li>
+                <li>Tinggikan darjatku</li>
+                <li>Berikan rezeki padaku</li>
+                <li>Berikan petunjuk padaku</li>
+                <li>Sihatkanlah tubuhku</li>
+                <li>Maafkanlah kesalahanku</li>
+              </ol>
+            </div>
+            <div class="p-3.5 rounded-2xl app-card-nested">
+              <strong class="block mb-1 text-slate-900 dark:text-slate-100">⏳ Surah Al-Asr & Pasak Mas'uliyyah Masa:</strong>
+              <p class="text-slate-600 dark:text-slate-300">Surah Al-Asr bersumpah demi masa bahawa seluruh manusia berada dalam kerugian melainkan mereka yang beriman, beramal soleh, dan saling berpesan kepada kebenaran serta kesabaran. Di MPKB-BRI, surah ini menjadi asas kepada integriti masa dan ketelitian kerja.</p>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: "sec-fatihah",
+        cluster: "akidah",
+        title: "Surah Al-Fatihah (7 Ayat)",
+        icon: "book-open",
+        badge: "Ummul Kitab",
+        bodyHtml: `
+          <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
+            <table class="responsive-table w-full text-left border-collapse editorial-body">
+              <thead>
+                <tr class="bg-botanic-50 dark:bg-botanic-900/30 text-botanic-800 dark:text-botanic-200 border-b border-slate-200 dark:border-white/10">
+                  <th class="py-2 px-2.5 font-semibold w-12 text-center">Ayat</th>
+                  <th class="py-2 px-2.5 font-semibold">Intisari Maksud & Pengajaran</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-white/5 text-slate-600 dark:text-slate-300">
+                <tr><td class="py-2 px-2.5 text-center font-bold text-botanic-600 dark:text-emerald-400">1</td><td class="py-2 px-2.5">Dengan nama Allah Yang Maha Pemurah lagi Maha Mengasihani.</td></tr>
+                <tr><td class="py-2 px-2.5 text-center font-bold text-botanic-600 dark:text-emerald-400">2 - 3</td><td class="py-2 px-2.5">Segala puji bagi Allah Tuhan sekalian alam; Yang Maha Pemurah lagi Maha Mengasihani.</td></tr>
+                <tr><td class="py-2 px-2.5 text-center font-bold text-botanic-600 dark:text-emerald-400">4</td><td class="py-2 px-2.5">Yang Menguasai pemerintahan Hari Pembalasan (Hari Kiamat).</td></tr>
+                <tr class="bg-botanic-50/50 dark:bg-botanic-900/20"><td class="py-2 px-2.5 text-center font-bold text-botanic-600 dark:text-emerald-400">5</td><td class="py-2 px-2.5 font-medium text-slate-800 dark:text-slate-100">Hanya Engkau yang kami sembah dan hanya kepada Engkau kami mohon pertolongan (Teras Tauhid & Ubudiyyah).</td></tr>
+                <tr><td class="py-2 px-2.5 text-center font-bold text-botanic-600 dark:text-emerald-400">6 - 7</td><td class="py-2 px-2.5">Tunjukilah kami jalan yang lurus; jalan orang yang Engkau beri nikmat, bukan jalan mereka yang dimurkai dan bukan orang yang sesat.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        `
+      },
+      {
+        id: "sec-tajwid",
+        cluster: "akidah",
+        title: "Hukum Tajwid Asas Al-Quran",
+        icon: "mic",
+        badge: "Tajwid",
+        bodyHtml: `
+          <div class="space-y-2.5 editorial-body">
+            <div class="p-3.5 rounded-2xl app-card-nested">
+              <strong class="text-botanic-600 dark:text-emerald-400 block mb-1.5">A. Hukum Nun Mati (نْ) & Tanwin (5 Bahagian):</strong>
+              <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-1">
+                <li><strong>Izhar Halqi (ء هـ ع ح غ خ):</strong> Bunyi jelas tanpa dengung.</li>
+                <li><strong>Idgham Ma'al Ghunnah (ي ن م و):</strong> Masuk bunyi ke huruf berserta dengung 2 harakat.</li>
+                <li><strong>Idgham Bila Ghunnah (ل ر):</strong> Masuk ke huruf tanpa dengung.</li>
+                <li><strong>Iqlab (ب):</strong> Tukar bunyi nun jadi mim (م) serta dengung 2 harakat.</li>
+                <li><strong>Ikhfa' Haqiqi (15 huruf):</strong> Bunyi samar antara izhar dan idgham berserta dengung.</li>
+              </ul>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <div class="p-3 rounded-2xl app-card-nested">
+                <strong class="block mb-1 text-slate-900 dark:text-slate-100">B. Mim Mati (مْ):</strong>
+                <p class="text-slate-600 dark:text-slate-300">1. Ikhfa' Syafawi (ب)<br>2. Idgham Mithlain (م)<br>3. Izhar Syafawi (selain م & ب)</p>
+              </div>
+              <div class="p-3 rounded-2xl app-card-nested">
+                <strong class="block mb-1 text-slate-900 dark:text-slate-100">C. Qalqalah:</strong>
+                <p class="text-slate-600 dark:text-slate-300">Huruf: <strong>ق ط ب ج د</strong><br>• Sughra (tengah kalimah)<br>• Kubra (di hujung ayat ketika waqaf)</p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: "sec-keluarga",
+        cluster: "munakahat",
+        title: "Hak & Tanggungjawab Suami Isteri (Munakahat)",
+        icon: "heart-handshake",
+        badge: "Keluarga",
+        bodyHtml: `
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 editorial-body">
+            <div class="p-3.5 app-card-nested rounded-2xl">
+              <strong class="text-botanic-600 dark:text-emerald-400 block mb-2">👨 Tanggungjawab Suami:</strong>
+              <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-1.5">
+                <li><strong>Nafkah Zahir:</strong> Tempat tinggal selamat, pakaian, makanan minuman, dan perubatan.</li>
+                <li><strong>Nafkah Batin:</strong> Menggauli isteri secara ma'ruf dan berkasih sayang.</li>
+                <li><strong>Bimbingan Agama:</strong> Membimbing solat, aurat, dan fardhu ain asas.</li>
+              </ul>
+            </div>
+            <div class="p-3.5 app-card-nested rounded-2xl">
+              <strong class="text-terracotta-500 block mb-2">🧕 Tanggungjawab Isteri:</strong>
+              <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-1.5">
+                <li><strong>Taat kepada Suami:</strong> Selagi tidak bertentangan dengan syarak.</li>
+                <li><strong>Menjaga Kehormatan:</strong> Memelihara maruah diri, harta suami, dan rahsia rumah tangga.</li>
+                <li><strong>Izin Suami:</strong> Meminta izin sebelum keluar rumah atau berpuasa sunat.</li>
+              </ul>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: "sec-rukun",
+        cluster: "akidah",
+        title: "Rukun Islam & Rukun Iman",
+        icon: "shield",
+        badge: "Akidah Asas",
+        bodyHtml: `
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 editorial-body">
+            <div class="rounded-2xl app-card-nested p-3.5">
+              <span class="font-bold text-botanic-700 dark:text-emerald-300 block mb-2 border-b border-slate-200 dark:border-white/10 pb-1">Rukun Islam (5 Perkara)</span>
+              <ol class="list-decimal editorial-list text-slate-600 dark:text-slate-300 space-y-1">
+                <li>Mengucap Dua Kalimah Syahadah</li>
+                <li>Solat 5 waktu sehari semalam</li>
+                <li>Mengeluarkan Zakat yang wajib</li>
+                <li>Berpuasa di bulan Ramadan</li>
+                <li>Mengerjakan Haji bagi yang mampu</li>
+              </ol>
+            </div>
+            <div class="rounded-2xl app-card-nested p-3.5">
+              <span class="font-bold text-amberwarm-500 block mb-2 border-b border-slate-200 dark:border-white/10 pb-1">Rukun Iman (6 Perkara)</span>
+              <ol class="list-decimal editorial-list text-slate-600 dark:text-slate-300 space-y-1">
+                <li>Beriman kepada Allah SWT</li>
+                <li>Beriman kepada para Malaikat</li>
+                <li>Beriman kepada Kitab-kitab suci</li>
+                <li>Beriman kepada para Rasul</li>
+                <li>Beriman kepada Hari Kiamat</li>
+                <li>Beriman kepada Qada' dan Qadar</li>
+              </ol>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: "sec-air",
+        cluster: "fiqh",
+        title: "Bahagian Air & Tayamum",
+        icon: "waves",
+        badge: "Taharah",
+        bodyHtml: `
+          <div class="space-y-2.5 editorial-body">
+            <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
+              <table class="responsive-table w-full text-left border-collapse">
+                <thead>
+                  <tr class="bg-botanic-50 dark:bg-botanic-900/30 text-botanic-800 dark:text-botanic-200 border-b border-slate-200 dark:border-white/10">
+                    <th class="py-2 px-2.5 font-semibold w-24">Air</th>
+                    <th class="py-2 px-2.5 font-semibold">Status Hukum</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 dark:divide-white/5 text-slate-600 dark:text-slate-300">
+                  <tr><td class="py-2 px-2.5 font-bold text-botanic-600 dark:text-emerald-400">1. Mutlak</td><td class="py-2 px-2.5">Suci lagi menyucikan (wuduk, mandi hadas, basuh najis).</td></tr>
+                  <tr><td class="py-2 px-2.5 font-bold text-sky-500">2. Musta'mal</td><td class="py-2 px-2.5">Suci pada zatnya tapi tidak menyucikan hadas kali kedua.</td></tr>
+                  <tr><td class="py-2 px-2.5 font-bold text-amberwarm-500">3. Musyammas</td><td class="py-2 px-2.5">Suci tetapi makruh guna pada badan (bekas logam panas matahari).</td></tr>
+                  <tr><td class="py-2 px-2.5 font-bold text-rose-500">4. Mutanajjis</td><td class="py-2 px-2.5">Dimasuki najis (kurang 2 kolah atau berubah bau, warna, rasa).</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="p-3 rounded-2xl app-card-nested">
+              <strong class="block text-slate-900 dark:text-slate-100 mb-1">🏜️ Ringkasan Tayamum:</strong>
+              <p class="text-slate-600 dark:text-slate-300">• <strong>Anggota Tayamum:</strong> Dua anggota sahaja iaitu <strong>muka dan kedua-dua belah tangan hingga siku</strong> menggunakan debu tanah suci.</p>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: "sec-taharah",
+        cluster: "fiqh",
+        title: "Taharah (Wuduk & Mandi Wajib)",
+        icon: "droplet",
+        badge: "Wajib",
+        bodyHtml: `
+          <div class="space-y-3 editorial-body">
+            <div>
+              <span class="font-bold text-botanic-600 dark:text-emerald-400 block mb-1.5">A. 6 Rukun Wuduk (Urutan Wajib):</span>
+              <ol class="list-decimal editorial-list text-slate-600 dark:text-slate-300 space-y-1">
+                <li>Niat ketika air sampai ke muka</li>
+                <li>Membasuh seluruh muka</li>
+                <li>Membasuh kedua-dua tangan hingga siku</li>
+                <li>Menyapu sebahagian kepala atau rambut</li>
+                <li>Membasuh kedua-dua belah kaki hingga buku lali</li>
+                <li>Tertib mengikut susunan</li>
+              </ol>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <div class="p-3 app-card-nested rounded-2xl">
+                <span class="font-bold text-rose-500 block mb-1">Batal Wuduk:</span>
+                <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-0.5">
+                  <li>Keluar sesuatu dari kubul/dubur.</li>
+                  <li>Hilang akal (tidur lena/mabuk).</li>
+                  <li>Sentuh kulit ajnabi tanpa lapik.</li>
+                  <li>Sentuh kemaluan tanpa lapik.</li>
+                </ul>
+              </div>
+              <div class="p-3 app-card-nested rounded-2xl">
+                <span class="font-bold text-botanic-600 dark:text-emerald-400 block mb-1">3 Rukun Mandi Wajib:</span>
+                <ol class="list-decimal editorial-list text-slate-600 dark:text-slate-300 space-y-0.5">
+                  <li>Niat mengangkat hadas besar.</li>
+                  <li>Menghilangkan najis 'aini.</li>
+                  <li>Meratakan air ke seluruh badan & bulu.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        `
       },
       {
         id: "sec-solat",
@@ -435,17 +916,382 @@
         title: "Rukun Solat (13 Perkara)",
         icon: "compass",
         badge: "4 Kategori",
-        bodyHtml: `<div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10"><table class="responsive-table w-full text-left border-collapse editorial-body"><tbody class="divide-y divide-slate-100 dark:divide-white/5"><tr><td class="py-2.5 px-3.5 font-bold text-rose-500">Qalbi</td><td class="py-2.5 px-3.5">1. Niat</td></tr><tr><td class="py-2.5 px-3.5 font-bold text-sky-500">Qauli</td><td class="py-2.5 px-3.5">2. Takbiratul Ihram, 3. Al-Fatihah, 4. Tahiyyat Akhir, 5. Selawat, 6. Salam</td></tr><tr><td class="py-2.5 px-3.5 font-bold text-botanic-600">Fi'li</td><td class="py-2.5 px-3.5">7. Berdiri, 8. Rukuk, 9. Iktidal, 10. Sujud, 11. Duduk antara dua sujud, 12. Duduk Tahiyyat</td></tr><tr><td class="py-2.5 px-3.5 font-bold text-amberwarm-500">Ma'nawi</td><td class="py-2.5 px-3.5">13. Tertib</td></tr></tbody></table></div>`
+        bodyHtml: `
+          <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
+            <table class="responsive-table w-full text-left border-collapse editorial-body">
+              <thead>
+                <tr class="bg-botanic-50 dark:bg-botanic-900/30 text-botanic-800 dark:text-botanic-200 border-b border-slate-200 dark:border-white/10">
+                  <th class="py-2 px-2.5 font-semibold w-20">Bahagian</th>
+                  <th class="py-2 px-2.5 font-semibold">Perincian 13 Rukun</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-white/5 text-slate-600 dark:text-slate-300">
+                <tr>
+                  <td class="py-2 px-2.5 font-semibold text-rose-500 align-top">Qalbi</td>
+                  <td class="py-2 px-2.5"><strong>1. Niat</strong> (lintas dalam hati semasa Takbiratul Ihram).</td>
+                </tr>
+                <tr>
+                  <td class="py-2 px-2.5 font-semibold text-sky-500 align-top">Qauli</td>
+                  <td class="py-2 px-2.5 space-y-0.5">
+                    <p><strong>2.</strong> Takbiratul Ihram, <strong>3.</strong> Membaca Surah Al-Fatihah, <strong>4.</strong> Membaca Tahiyyat Akhir, <strong>5.</strong> Selawat ke atas Nabi, <strong>6.</strong> Salam yang pertama.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-2 px-2.5 font-semibold text-botanic-600 dark:text-emerald-400 align-top">Fi'li</td>
+                  <td class="py-2 px-2.5 space-y-0.5">
+                    <p><strong>7.</strong> Berdiri betul, <strong>8.</strong> Ruku' serta tama'ninah, <strong>9.</strong> I'tidal serta tama'ninah, <strong>10.</strong> Sujud dua kali serta tama'ninah, <strong>11.</strong> Duduk antara dua sujud serta tama'ninah, <strong>12.</strong> Duduk bagi Tahiyyat Akhir.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-2 px-2.5 font-semibold text-amberwarm-500 align-top">Ma'nawi</td>
+                  <td class="py-2 px-2.5"><strong>13. Tertib</strong> (mengikut aturan susunan).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        `
+      },
+      {
+        id: "sec-solat-lanjutan",
+        cluster: "fiqh",
+        title: "Sunat Ab'adh & Batal Solat",
+        icon: "zap",
+        badge: "Lanjutan",
+        bodyHtml: `
+          <div class="space-y-2.5 editorial-body">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <div class="p-3 rounded-2xl app-card-nested">
+                <strong class="text-amberwarm-500 block mb-1">⭐ Sunat Ab'adh (Ganti Sujud Sahwi):</strong>
+                <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-0.5">
+                  <li>Duduk & baca Tahiyyat Awal.</li>
+                  <li>Selawat atas Nabi dlm Tahiyyat Awal.</li>
+                  <li>Membaca Doa Qunut waktu Subuh.</li>
+                  <li>Berdiri ketika membaca Doa Qunut.</li>
+                </ul>
+              </div>
+              <div class="p-3 rounded-2xl app-card-nested">
+                <strong class="text-rose-500 block mb-1">🚫 Perkara Membatalkan Solat:</strong>
+                <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-0.5">
+                  <li>Bergerak 3 kali berturut-turut anggota besar.</li>
+                  <li>Berkata-kata dengan sengaja.</li>
+                  <li>Makan atau minum dengan sengaja.</li>
+                  <li>Terbuka aurat & tidak ditutup serta-merta.</li>
+                  <li>Beralih dada membelakangi kiblat.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: "sec-najis",
+        cluster: "fiqh",
+        title: "Jenis Najis & Kaedah Menyucikannya",
+        icon: "sparkle",
+        badge: "Najis",
+        bodyHtml: `
+          <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10 editorial-body">
+            <table class="responsive-table w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-botanic-50 dark:bg-botanic-900/30 text-botanic-800 dark:text-botanic-200 border-b border-slate-200 dark:border-white/10">
+                  <th class="py-2 px-2.5 font-semibold w-24">Tahap Najis</th>
+                  <th class="py-2 px-2.5 font-semibold">Contoh & Cara Bersuci</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-white/5 text-slate-600 dark:text-slate-300">
+                <tr>
+                  <td class="py-2.5 px-2.5 font-bold text-botanic-600 dark:text-emerald-400 align-top">Mukhaffafah (Ringan)</td>
+                  <td class="py-2.5 px-2.5">Kencing bayi lelaki &lt; 2 tahun susu ibu sahaja. Cara: Lap sisa air kencing, renjis air mutlak hingga rata.</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-2.5 font-bold text-amberwarm-500 align-top">Mutawassitah (Sederhana)</td>
+                  <td class="py-2.5 px-2.5">Najis manusia, haiwan, darah, nanah, bangkai. Cara: Buang fizikal najis, basuh air mutlak hingga hilang bau, warna & rasa.</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-2.5 font-bold text-rose-500 align-top">Mughallazah (Berat)</td>
+                  <td class="py-2.5 px-2.5">Anjing, babi dan keturunannya. Cara: 7 kali basuhan air mutlak dengan salah satunya air campuran tanah bersih (sertu).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        `
+      }
+    ];
+
+    const quizData = [
+      {
+        category: "Dasar BRI",
+        question: "Bilakah tarikh rasmi pengisytiharan Kota Bharu sebagai Bandar Raya Islam (BRI)?",
+        options: ["1 Oktober 2005", "1 Januari 2000", "1 Julai 2010", "31 Ogos 1990"],
+        correct: 0,
+        rationale: "Kota Bharu telah diisytiharkan secara rasmi sebagai Bandar Raya Islam pada 1 Oktober 2005 di bawah dasar pentadbiran Membangun Bersama Islam (MBI)."
+      },
+      {
+        category: "Dasar BRI",
+        question: "Antara berikut, manakah BUKAN dalam senarai Lima Kesejahteraan Bandar Raya Islam (BRI)?",
+        options: ["Kesejahteraan Hiburan Bebas", "Kesejahteraan Akidah", "Kesejahteraan Akhlak", "Kesejahteraan Kesihatan & Kebersihan"],
+        correct: 0,
+        rationale: "5 Kesejahteraan BRI merangkumi Kesejahteraan Akidah, Akhlak, Kesihatan & Kebersihan, Ekonomi, serta Sosial & Keselamatan."
+      },
+      {
+        category: "Dasar UMI",
+        question: "Bilakah gagasan dasar Membangun Bersama Islam (MBI) yang melahirkan konsep UMI mula diperkenalkan di Kelantan?",
+        options: ["Tahun 1990 di bawah pimpinan Tok Guru Nik Abdul Aziz", "Tahun 2000 sempena deklarasi Bandar Raya Islam", "Tahun 2020 melalui penerbitan Manual Pelaksanaan", "Tahun 1985 sebagai modul latihan awam"],
+        correct: 0,
+        rationale: "Dasar MBI diasaskan pada tahun 1990 oleh Almarhum Tok Guru Nik Aziz, manakala Manual Pelaksanaan Prinsip UMI dikuatkuasakan pada tahun 2020."
+      },
+      {
+        category: "Teras UMI",
+        question: "Seorang pegawai majlis sentiasa memastikan dokumen lesen disemak tanpa ralat (zero defect) dan fail disusun teratur. Apakah prinsip UMI yang diamalkan?",
+        options: ["Itqan", "Ubudiyyah", "Mas'uliyyah", "Syura"],
+        correct: 0,
+        rationale: "Itqan bermaksud ketelitian, kekemasan, kualiti tinggi, dan sifar ralat dalam melakukan setiap pekerjaan."
+      },
+      {
+        category: "Teras UMI",
+        question: "Menjaga amanah kenderaan jabatan dan tidak menggunakannya untuk urusan peribadi mencerminkan penghayatan teras:",
+        options: ["Mas'uliyyah", "Ubudiyyah", "Itqan", "Tawaduk"],
+        correct: 0,
+        rationale: "Mas'uliyyah membawa maksud kebertanggungjawaban, akauntabiliti, dan menjaga amanah aset kerajaan kerana sedar akan dihisab."
+      },
+      {
+        category: "Integriti",
+        question: "Apakah status hukum bagi seorang kakitangan yang membuat tuntutan elaun perjalanan palsu (false claims)?",
+        options: ["Haram dan merupakan perbuatan khianat", "Makruh selagi wang digunakan untuk kebajikan", "Syubhah yang dimaafkan majlis", "Mubah jika dipersetujui rakan sekerja"],
+        correct: 0,
+        rationale: "Tuntutan palsu adalah penipuan harta awam yang haram dan mencemarkan integriti keberkatan rezeki penjawat awam."
+      },
+      {
+        category: "Sifat Rasul",
+        question: "Sifat wajib bagi Rasul yang membawa erti 'Bijaksana' dalam menyelesaikan masalah dan aduan rakyat ialah:",
+        options: ["Fatanah", "Siddiq", "Amanah", "Tabligh"],
+        correct: 0,
+        rationale: "Fatanah bermaksud bijaksana. Sifat lawannya yang mustahil adalah Baladah (bebal/bodoh)."
+      },
+      {
+        category: "Fiqh Solat Lanjutan",
+        question: "Sekiranya seseorang terlupa membaca Doa Qunut semasa solat Subuh, apakah yang disunatkan untuk menampung kekurangan tersebut?",
+        options: ["Melakukan Sujud Sahwi sebelum salam", "Mengulangi semula solat dari awal", "Membayar fidyah solat", "Melakukan Sujud Tilawah"],
+        correct: 0,
+        rationale: "Doa Qunut Subuh adalah Sunat Ab'adh. Sekiranya tertinggal, disunatkan melakukan Sujud Sahwi 2 kali sebelum memberi salam."
+      },
+      {
+        category: "Fiqh Solat Lanjutan",
+        question: "Antara berikut, manakah perbuatan yang MEMBATALKAN solat?",
+        options: ["Bergerak 3 kali berturut-turut anggota besar", "Mengelipkan mata beberapa kali kerana pedih", "Menggerakkan jari tangan ketika bertasbih", "Menundukkan pandangan ke tempat sujud"],
+        correct: 0,
+        rationale: "Pergerakan 3 kali berturut-turut anggota besar (kaki, tangan, badan) membatalkan solat menurut mazhab Syafi'i."
+      },
+      {
+        category: "Bahagian Air",
+        question: "Air yang telah digunakan untuk membasuh wuduk fardhu yang kurang daripada 2 kolah dikategorikan sebagai:",
+        options: ["Air Musta'mal (suci tetapi tidak menyucikan)", "Air Mutlak (suci dan menyucikan)", "Air Mutanajjis (air najis)", "Air Musyammas (air panas matahari)"],
+        correct: 0,
+        rationale: "Air Musta'mal adalah air yang suci pada zatnya tetapi tidak boleh digunakan lagi untuk mengangkat hadas kali kedua."
+      },
+      {
+        category: "Tayamum",
+        question: "Berapakah bilangan anggota wajib yang disapu semasa bertayamum dengan debu tanah?",
+        options: ["2 anggota sahaja (Muka dan dua tangan hingga siku)", "4 anggota mengikut rukun wuduk", "Seluruh anggota badan termasuk kaki", "Muka dan kepala sahaja"],
+        correct: 0,
+        rationale: "Anggota tayamum hanyalah dua iaitu menyapu muka dan menyapu kedua-dua belah tangan hingga ke siku."
+      },
+      {
+        category: "Hafazan & Bacaan",
+        question: "Surah Al-Asr menekankan bahawa semua manusia berada dalam kerugian melainkan mereka yang menjaga amanah:",
+        options: ["Masa, beriman, beramal soleh & saling berpesan", "Mengumpul kekayaan demi keluarga", "Membina bangunan perbandaran yang megah", "Berpuasa sunat setiap hari"],
+        correct: 0,
+        rationale: "Surah Al-Asr menjadi pasak penghayatan masa (Mas'uliyyah) bahawa seluruh insan rugi melainkan yang beriman dan beramal soleh."
+      },
+      {
+        category: "Fardhu Ain vs Kifayah",
+        question: "Antara berikut, amalan manakah yang tergolong dalam kategori Fardhu Kifayah?",
+        options: ["Solat jenazah secara berjemaah", "Menunaikan solat lima waktu setiap hari", "Berpuasa penuh pada bulan Ramadan", "Menutup aurat ketika berada di tempat awam"],
+        correct: 0,
+        rationale: "Solat jenazah ialah Fardhu Kifayah; kewajipan gugur ke atas orang lain sekiranya ada sebahagian masyarakat yang melaksanakannya."
+      },
+      {
+        category: "Surah Al-Fatihah",
+        question: "Ayat ke-5 Surah Al-Fatihah iaitu 'Iyyaka na'budu wa-iyyaka nasta'in' membawa pengajaran utama tentang:",
+        options: ["Teras Ubudiyyah dan pergantungan mutlak kepada Allah", "Hari pembalasan dan kebangkitan semula", "Kisah orang terdahulu yang dimurkai", "Pemberian rezeki dan nikmat duniawi"],
+        correct: 0,
+        rationale: "Ayat ini bermaksud 'Hanya Engkau yang kami sembah dan hanya kepada Engkau kami mohon pertolongan' yang merupakan pasak tauhid dan Ubudiyyah."
+      },
+      {
+        category: "Tajwid",
+        question: "Pertemuan huruf Nun Mati (نْ) dengan huruf Ba (ب) dalam bacaan Al-Quran menghasilkan hukum:",
+        options: ["Iqlab (menukar bunyi nun kepada mim serta dengung)", "Izhar Halqi (membaca dengan jelas tanpa dengung)", "Idgham Bila Ghunnah (memasukkan bunyi tanpa dengung)", "Ikhfa' Syafawi (menyembunyikan bunyi bibir)"],
+        correct: 0,
+        rationale: "Iqlab berlaku apabila nun mati atau tanwin bertemu huruf Ba (ب), di mana bunyi nun ditukar kepada mim berserta dengung 2 harakat."
+      },
+      {
+        category: "Tajwid",
+        question: "Huruf-huruf Qalqalah (lantunan bunyi) terkumpul dalam kalimah:",
+        options: ["ق ط ب ج د (Baju Di Kotoq)", "ي ن م و (Yanmu)", "ء هـ ع ح غ خ (Huruf Halqi)", "ل ر (Huruf Idgham Bila Ghunnah)"],
+        correct: 0,
+        rationale: "Huruf Qalqalah ada 5 iaitu Qaf (ق), Tha (ط), Ba (ب), Jim (ج), dan Dal (د)."
+      },
+      {
+        category: "Munakahat",
+        question: "Antara berikut, yang manakah merupakan tanggungjawab nafkah zahir bagi seorang suami?",
+        options: ["Menyediakan tempat tinggal selamat, pakaian dan makan minum", "Mentaati segala arahan isteri tanpa syarat", "Memohon izin daripada isteri sebelum bekerja", "Membayar puasa ganti bagi pihak isteri"],
+        correct: 0,
+        rationale: "Nafkah zahir yang wajib disediakan oleh suami merangkumi makanan, pakaian, tempat tinggal yang selamat, dan perubatan."
+      },
+      {
+        category: "Rukun Islam & Iman",
+        question: "Percaya kepada Qada' dan Qadar merupakan rukun ke berapa dalam Rukun Iman?",
+        options: ["Rukun Iman ke-6", "Rukun Iman ke-5", "Rukun Islam ke-4", "Rukun Iman ke-4"],
+        correct: 0,
+        rationale: "Rukun Iman ada 6 perkara, dan yang ke-6 ialah percaya kepada ketentuan Qada' dan Qadar Allah SWT."
+      },
+      {
+        category: "Taharah (Wuduk)",
+        question: "Manakah antara berikut BUKAN daripada 6 rukun wuduk?",
+        options: ["Membasuh telinga", "Niat ketika membasuh muka", "Membasuh kedua-dua tangan hingga siku", "Tertib mengikut susunan"],
+        correct: 0,
+        rationale: "Membasuh telinga adalah amalan SUNAT wuduk, bukan rukun wajib wuduk yang terdiri daripada 6 perkara."
+      },
+      {
+        category: "Taharah (Mandi Wajib)",
+        question: "Berapakah bilangan rukun mandi wajib menurut mazhab Syafi'i?",
+        options: ["3 rukun (Niat, buang najis 'aini, ratakan air ke seluruh badan & bulu)", "6 rukun mengikut urutan tertib wuduk", "5 rukun termasuk berkumur-kumur", "2 rukun sahaja iaitu niat dan basuh kepala"],
+        correct: 0,
+        rationale: "Rukun mandi wajib ada 3 perkara utama: Niat hadas besar, menghilangkan najis 'aini, dan meratakan air ke seluruh badan serta bulu-bulu."
+      },
+      {
+        category: "Rukun Solat",
+        question: "Membaca Surah Al-Fatihah dalam solat diklasifikasikan di bawah kategori rukun:",
+        options: ["Rukun Qauli (Bacaan yang wajib didengar sendiri)", "Rukun Fi'li (Perbuatan anggota badan)", "Rukun Qalbi (Lintasan dalam hati)", "Rukun Ma'nawi (Peraturan susunan)"],
+        correct: 0,
+        rationale: "Al-Fatihah, Takbiratul Ihram, Tahiyyat Akhir, Selawat atas Nabi, dan Salam Pertama ialah Rukun Qauli."
+      },
+      {
+        category: "Najis",
+        question: "Bagaimanakah kaedah menyucikan Najis Mukhaffafah (kencing bayi lelaki < 2 tahun yang hanya minum susu ibu)?",
+        options: ["Lap sisa kencing, kemudian renjis/percik air mutlak hingga rata", "Membasuh 7 kali dengan salah satunya air tanah", "Mengalirkan air sabun hingga hilang bau dan rasa", "Cukup dengan membiarkannya kering ditiup angin"],
+        correct: 0,
+        rationale: "Najis Mukhaffafah disucikan dengan membuang sisa cairan, kemudian merenjiskan air mutlak ke seluruh tempat tersebut."
+      },
+      {
+        category: "Najis",
+        question: "Najis Mughallazah (anjing dan babi) wajib disucikan dengan cara:",
+        options: ["7 kali basuhan air mutlak dan salah satu daripadanya air bercampur tanah bersih", "3 kali basuhan air sabun dan dibilas air mutlak", "1 kali basuhan asalkan hilang bau, warna dan rasa", "Menyembur minyak wangi ke atas najis"],
+        correct: 0,
+        rationale: "Najis Mughallazah wajib dibersihkan fizikal najisnya, kemudian dibasuh 7 kali basuhan air mutlak dengan salah satu daripadanya air tanah suci."
       }
     ];
 
     let readProgressState = JSON.parse(localStorage.getItem('umi_read_progress') || '{}');
+    let quizProgressState = JSON.parse(localStorage.getItem('umi_quiz_progress') || '{}');
+
+    function toggleTopicCompleted(id) {
+      readProgressState[id] = !readProgressState[id];
+      localStorage.setItem('umi_read_progress', JSON.stringify(readProgressState));
+      updateReadingUI();
+      updateAnalyticsData();
+    }
+
+    function updateReadingUI() {
+      auditTopicsData.forEach(topic => {
+        const isDone = !!readProgressState[topic.id];
+        const btn = document.getElementById('btnDone-' + topic.id);
+        if (btn) {
+          if (isDone) {
+            btn.className = "touch-target-h px-3.5 py-2 rounded-full text-xs font-bold bg-botanic-600 text-white flex items-center gap-1.5 shadow-xs transition";
+            btn.innerHTML = `<i data-lucide="check-check" class="w-4 h-4"></i> Selesai`;
+          } else {
+            btn.className = "touch-target-h px-3.5 py-2 rounded-full text-xs font-medium app-card-nested text-slate-500 hover:text-slate-700 flex items-center gap-1.5 transition";
+            btn.innerHTML = `<i data-lucide="circle" class="w-4 h-4"></i> Tandai Selesai`;
+          }
+        }
+      });
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function updateAnalyticsData() {
+      const totalTopics = auditTopicsData.length;
+      const readCount = Object.values(readProgressState).filter(Boolean).length;
+      const readPercent = Math.round((readCount / totalTopics) * 100) || 0;
+
+      const heroProg = document.getElementById('heroProgressPercent');
+      if (heroProg) heroProg.textContent = `${readPercent}%`;
+
+      const scoreText = document.getElementById('analyticsReadingScoreText');
+      const progBar = document.getElementById('analyticsReadingProgressBar');
+      if (scoreText) scoreText.textContent = `${readCount} / ${totalTopics} (${readPercent}%)`;
+      if (progBar) progBar.style.width = `${readPercent}%`;
+
+      const totalQuiz = quizData.length;
+      const answeredKeys = Object.keys(quizProgressState);
+      let correctCount = 0;
+      let wrongCount = 0;
+
+      answeredKeys.forEach(k => {
+        if (quizProgressState[k].isCorrect) correctCount++;
+        else wrongCount++;
+      });
+
+      const unansweredCount = totalQuiz - answeredKeys.length;
+      const pctCorrect = (correctCount / totalQuiz) * 100;
+      const pctWrong = (wrongCount / totalQuiz) * 100;
+      const pctUnanswered = (unansweredCount / totalQuiz) * 100;
+
+      const bCorrect = document.getElementById('barCorrect');
+      const bWrong = document.getElementById('barWrong');
+      const bUnans = document.getElementById('barUnanswered');
+      if (bCorrect) bCorrect.style.width = `${pctCorrect}%`;
+      if (bWrong) bWrong.style.width = `${pctWrong}%`;
+      if (bUnans) bUnans.style.width = `${pctUnanswered}%`;
+
+      const lblCor = document.getElementById('lblCorrectCount');
+      const lblWr = document.getElementById('lblWrongCount');
+      const lblUn = document.getElementById('lblUnansweredCount');
+      if (lblCor) lblCor.textContent = correctCount;
+      if (lblWr) lblWr.textContent = wrongCount;
+      if (lblUn) lblUn.textContent = unansweredCount;
+
+      const badge = document.getElementById('analyticsQuizGradeBadge');
+      if (badge) {
+        if (answeredKeys.length === 0) {
+          badge.textContent = "BELUM MULA";
+          badge.className = "app-sub-text font-bold px-2.5 py-0.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-500";
+        } else if (correctCount >= 18) {
+          badge.textContent = "CEMERLANG (ITQAN)";
+          badge.className = "app-sub-text font-bold px-2.5 py-0.5 rounded-full bg-botanic-500/20 text-botanic-600 dark:text-emerald-300 border border-botanic-500/30";
+        } else if (correctCount >= 12) {
+          badge.textContent = "LULUS (MEMUASKAN)";
+          badge.className = "app-sub-text font-bold px-2.5 py-0.5 rounded-full bg-amberwarm-500/20 text-amberwarm-500 border border-amberwarm-500/30";
+        } else {
+          badge.textContent = "ULANG KAJI DIPERLUKAN";
+          badge.className = "app-sub-text font-bold px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-500 border border-rose-500/30";
+        }
+      }
+    }
+
+    function resetAllProgress() {
+      if (confirm("Adakah anda pasti mahu menetapkan semula (reset) semua rekod pembacaan dan skor kuiz?")) {
+        readProgressState = {};
+        quizProgressState = {};
+        answeredQuestions = {};
+        quizScore = 0;
+        localStorage.removeItem('umi_read_progress');
+        localStorage.removeItem('umi_quiz_progress');
+        updateReadingUI();
+        updateAnalyticsData();
+        updateScoreDisplay();
+        renderQuizQuestion();
+        showToast("Rekod kemajuan telah di-reset");
+      }
+    }
+
     let currentFilterCluster = 'all';
     let fuseSearchEngine = null;
 
     function renderDynamicApp() {
-      const container = document.getElementById('contentContainer');
+      const contentContainer = document.getElementById('contentContainer');
       const drawerList = document.getElementById('drawerItemsList');
+
       let contentHtml = '';
       let drawerHtml = '';
 
@@ -453,53 +1299,73 @@
         drawerHtml += `
           <button type="button" onclick="handleDrawerClick('${topic.id}')" class="touch-target-h w-full text-left p-3 rounded-2xl flex items-center justify-between hover:bg-slate-100 dark:hover:bg-white/5 transition">
             <div class="flex items-center gap-3">
-              <div class="w-8 h-8 rounded-full bg-botanic-500/10 text-botanic-600 flex items-center justify-center">
+              <div class="w-8 h-8 rounded-full bg-botanic-500/10 text-botanic-600 dark:text-emerald-400 flex items-center justify-center">
                 <i data-lucide="${topic.icon}" class="w-4 h-4"></i>
               </div>
-              <span class="app-note-heading font-semibold">${topic.title}</span>
+              <span class="app-note-heading font-semibold text-slate-800 dark:text-slate-200">${topic.title.split('(')[0].trim()}</span>
             </div>
+            <span class="app-sub-text px-2.5 py-0.5 rounded-full app-card-nested text-slate-500">${topic.badge}</span>
           </button>
         `;
 
         const isHidden = (currentFilterCluster !== 'all' && topic.cluster !== currentFilterCluster) ? 'hidden' : '';
         contentHtml += `
-          <section id="${topic.id}" data-cluster="${topic.cluster}" class="note-section app-card rounded-[26px] p-4 sm:p-5 scroll-mt-28 transition-all relative ${isHidden}">
-            <div class="flex items-center justify-between mb-3.5 border-b border-emerald-900/10 pb-3">
+          <section id="${topic.id}" data-cluster="${topic.cluster}" class="note-section app-card rounded-[26px] p-4 sm:p-5 scroll-mt-28 transition-all ${isHidden}">
+            <div class="flex items-center justify-between mb-3.5 border-b border-emerald-900/10 dark:border-white/10 pb-3">
               <div class="flex items-center gap-2.5">
-                <div class="w-9 h-9 rounded-2xl bg-botanic-500/10 text-botanic-600 flex items-center justify-center">
+                <div class="w-9 h-9 rounded-2xl bg-botanic-500/10 text-botanic-600 dark:text-emerald-400 flex items-center justify-center">
                   <i data-lucide="${topic.icon}" class="w-4 h-4"></i>
                 </div>
-                <h2 class="app-note-title font-bold text-slate-900 dark:text-slate-100 uppercase">${topic.title}</h2>
+                <h2 class="app-note-title font-bold tracking-tight text-slate-900 dark:text-slate-100 uppercase pr-2">${topic.title}</h2>
               </div>
-              <span class="app-sub-text px-2.5 py-1 rounded-full font-bold bg-botanic-500/10 text-botanic-600">${topic.badge}</span>
+              <span class="shrink-0 app-sub-text px-2.5 py-1 rounded-full font-bold bg-botanic-500/10 text-botanic-600 dark:text-emerald-300 border border-botanic-500/20">${topic.badge}</span>
             </div>
+            
             <div>${topic.bodyHtml}</div>
+
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
+              <span class="app-sub-text text-slate-400">Status Semakan Topik:</span>
+              <button onclick="toggleTopicCompleted('${topic.id}')" id="btnDone-${topic.id}" class="touch-target-h px-3.5 py-2 rounded-full text-xs font-medium app-card-nested text-slate-500 hover:text-slate-700 flex items-center gap-1.5 transition">
+                <i data-lucide="circle" class="w-4 h-4"></i> Tandai Selesai
+              </button>
+            </div>
           </section>
         `;
       });
 
       if (drawerList) drawerList.innerHTML = drawerHtml;
-      if (container) container.innerHTML = contentHtml;
+      if (contentContainer) contentContainer.innerHTML = contentHtml;
 
       if (window.lucide) lucide.createIcons();
       initFuzzySearch();
+      updateReadingUI();
+      updateAnalyticsData();
     }
 
     function openNavDrawer() {
-      document.getElementById('navDrawerOverlay').classList.remove('opacity-0', 'pointer-events-none');
-      document.getElementById('navDrawer').classList.remove('-translate-x-full');
+      const drawer = document.getElementById('navDrawer');
+      const overlay = document.getElementById('navDrawerOverlay');
+      if (overlay) overlay.classList.remove('opacity-0', 'pointer-events-none');
+      if (drawer) drawer.classList.remove('-translate-x-full');
     }
 
     function closeNavDrawer() {
-      document.getElementById('navDrawerOverlay').classList.add('opacity-0', 'pointer-events-none');
-      document.getElementById('navDrawer').classList.add('-translate-x-full');
+      const drawer = document.getElementById('navDrawer');
+      const overlay = document.getElementById('navDrawerOverlay');
+      if (overlay) overlay.classList.add('opacity-0', 'pointer-events-none');
+      if (drawer) drawer.classList.add('-translate-x-full');
     }
 
     function handleDrawerClick(id) {
       closeNavDrawer();
-      filterByCluster('all');
+      if (currentFilterCluster !== 'all') {
+        filterByCluster('all');
+      }
       setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const target = document.getElementById(id);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       }, 200);
     }
 
@@ -508,8 +1374,11 @@
       document.querySelectorAll('.cluster-chip').forEach(btn => {
         btn.className = 'cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-medium app-card text-slate-600 dark:text-slate-300 transition';
       });
+
       const activeChip = document.getElementById('chip-' + clusterKey);
-      if (activeChip) activeChip.className = 'cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-semibold bg-botanic-600 text-white shadow-sm transition';
+      if (activeChip) {
+        activeChip.className = 'cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-semibold bg-botanic-600 text-white shadow-sm transition';
+      }
 
       document.querySelectorAll('.note-section').forEach(sec => {
         const secCluster = sec.getAttribute('data-cluster');
@@ -519,106 +1388,428 @@
           sec.classList.add('hidden');
         }
       });
-    }
-
-    function initFuzzySearch() {
-      if (typeof Fuse !== 'undefined') {
-        fuseSearchEngine = new Fuse(auditTopicsData, { keys: ['title'], threshold: 0.35 });
-      }
-    }
-
-    function executeFuzzySearch(q) {
-      const resultsContainer = document.getElementById('searchResultsList');
-      if (!q.trim()) {
-        resultsContainer.innerHTML = '<div class="text-center py-8 text-slate-400">Taip kata kunci untuk memulakan carian.</div>';
-        return;
-      }
-      const results = fuseSearchEngine ? fuseSearchEngine.search(q) : [];
-      let html = '';
-      results.forEach(res => {
-        html += `<button onclick="jumpToSearchResult('${res.item.id}')" class="touch-target-h w-full text-left p-3.5 rounded-2xl app-card-nested mb-2 block"><span class="font-bold text-botanic-600 block">${res.item.title}</span></button>`;
-      });
-      resultsContainer.innerHTML = html || '<div class="text-center py-8 text-slate-400">Tiada padanan.</div>';
-    }
-
-    function jumpToSearchResult(id) {
-      closeSearchModal();
-      filterByCluster('all');
-      setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 200);
-    }
-
-    function openSearchModal() {
-      const m = document.getElementById('searchModal');
-      m.classList.remove('hidden');
-      setTimeout(() => { m.classList.remove('opacity-0'); document.getElementById('searchModalCard').classList.remove('scale-95'); }, 10);
-    }
-
-    function closeSearchModal() {
-      const m = document.getElementById('searchModal');
-      m.classList.add('opacity-0');
-      document.getElementById('searchModalCard').classList.add('scale-95');
-      setTimeout(() => m.classList.add('hidden'), 200);
-    }
-
-    function openQuizModal() {
-      const m = document.getElementById('quizModal');
-      m.classList.remove('hidden');
-      setTimeout(() => { m.classList.remove('opacity-0'); document.getElementById('quizModalCard').classList.remove('scale-95'); }, 10);
-    }
-
-    function closeQuizModal() {
-      const m = document.getElementById('quizModal');
-      m.classList.add('opacity-0');
-      document.getElementById('quizModalCard').classList.add('scale-95');
-      setTimeout(() => m.classList.add('hidden'), 200);
+      showToast(`Paparan: ${clusterKey.toUpperCase()}`);
     }
 
     function openAnalyticsModal() {
-      const m = document.getElementById('analyticsModal');
-      m.classList.remove('hidden');
-      setTimeout(() => { m.classList.remove('opacity-0'); document.getElementById('analyticsModalCard').classList.remove('scale-95'); }, 10);
+      updateAnalyticsData();
+      const modal = document.getElementById('analyticsModal');
+      const card = document.getElementById('analyticsModalCard');
+      if (modal && card) {
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+          modal.classList.remove('opacity-0');
+          card.classList.remove('scale-95');
+        }, 10);
+      }
     }
 
     function closeAnalyticsModal() {
-      const m = document.getElementById('analyticsModal');
-      m.classList.add('opacity-0');
-      document.getElementById('analyticsModalCard').classList.add('scale-95');
-      setTimeout(() => m.classList.add('hidden'), 200);
+      const modal = document.getElementById('analyticsModal');
+      const card = document.getElementById('analyticsModalCard');
+      if (modal && card) {
+        modal.classList.add('opacity-0');
+        card.classList.add('scale-95');
+        setTimeout(() => { modal.classList.add('hidden'); }, 200);
+      }
     }
 
-    function toggleTheme() {
-      document.documentElement.classList.toggle('dark');
+    function initFuzzySearch() {
+      const searchableItems = auditTopicsData.map(topic => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = topic.bodyHtml;
+        return {
+          id: topic.id,
+          cluster: topic.cluster,
+          title: topic.title,
+          text: tempDiv.textContent || tempDiv.innerText || ''
+        };
+      });
+
+      if (typeof Fuse !== 'undefined') {
+        fuseSearchEngine = new Fuse(searchableItems, {
+          keys: ['title', 'text'],
+          threshold: 0.35,
+          ignoreLocation: true
+        });
+      }
     }
 
-    function toggleSettingsDrawer() {
-      document.getElementById('settingsPanel').classList.toggle('hidden');
+    function openSearchModal() {
+      const modal = document.getElementById('searchModal');
+      const card = document.getElementById('searchModalCard');
+      const input = document.getElementById('searchInput');
+      if (modal && card && input) {
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+          modal.classList.remove('opacity-0');
+          card.classList.remove('scale-95');
+          input.focus();
+        }, 10);
+      }
     }
 
-    function setFontSize(sizeKey) {
-      document.getElementById('appBody').className = `font-size-${sizeKey} antialiased min-h-screen transition-colors duration-300`;
+    function closeSearchModal() {
+      const modal = document.getElementById('searchModal');
+      const card = document.getElementById('searchModalCard');
+      if (modal && card) {
+        modal.classList.add('opacity-0');
+        card.classList.add('scale-95');
+        setTimeout(() => { modal.classList.add('hidden'); }, 200);
+      }
     }
 
-    function toggleStealth() {
-      document.getElementById('stealthUI').classList.toggle('hidden');
-      document.getElementById('mainUI').classList.toggle('hidden');
+    function executeFuzzySearch(query) {
+      const q = query.trim();
+      const resultsContainer = document.getElementById('searchResultsList');
+      if (!resultsContainer) return;
+
+      if (!q) {
+        resultsContainer.innerHTML = '<div class="text-center py-8 text-slate-400">Taip kata kunci untuk memulakan carian pintar.</div>';
+        return;
+      }
+
+      const results = fuseSearchEngine ? fuseSearchEngine.search(q) : [];
+      if (results.length === 0) {
+        resultsContainer.innerHTML = `<div class="text-center py-8 text-slate-400">Tiada padanan untuk "${query}".</div>`;
+        return;
+      }
+
+      let html = '';
+      results.slice(0, 6).forEach(res => {
+        const item = res.item;
+        html += `
+          <button type="button" onclick="jumpToSearchResult('${item.id}')" class="touch-target-h w-full text-left p-3.5 rounded-2xl app-card-nested hover:scale-[1.01] transition">
+            <span class="font-bold app-note-heading text-botanic-600 dark:text-emerald-400 block">${item.title}</span>
+            <span class="app-sub-text text-slate-500">Tekan untuk melompat ke bahagian ini ➔</span>
+          </button>
+        `;
+      });
+      resultsContainer.innerHTML = html;
+    }
+
+    function jumpToSearchResult(sectionId) {
+      closeSearchModal();
+      if (currentFilterCluster !== 'all') filterByCluster('all');
+      setTimeout(() => {
+        const sec = document.getElementById(sectionId);
+        if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 200);
+    }
+
+    let currentQuizIndex = 0;
+    let quizScore = 0;
+    let answeredQuestions = quizProgressState || {};
+    let tempSelectedOption = null;
+
+    Object.values(answeredQuestions).forEach(ans => {
+      if (ans.isCorrect) quizScore++;
+    });
+
+    function openQuizModal() {
+      const modal = document.getElementById('quizModal');
+      const card = document.getElementById('quizModalCard');
+      if (modal && card) {
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+          modal.classList.remove('opacity-0');
+          card.classList.remove('scale-95');
+        }, 10);
+        renderQuizQuestion();
+      }
+    }
+
+    function closeQuizModal() {
+      const modal = document.getElementById('quizModal');
+      const card = document.getElementById('quizModalCard');
+      if (modal && card) {
+        modal.classList.add('opacity-0');
+        card.classList.add('scale-95');
+        setTimeout(() => { modal.classList.add('hidden'); }, 200);
+      }
+    }
+
+    function renderQuizQuestion() {
+      if (quizData.length === 0) return;
+      const q = quizData[currentQuizIndex];
+      const catBadge = document.getElementById('quizCategoryBadge');
+      const idxBadge = document.getElementById('quizIndexBadge');
+      const qText = document.getElementById('quizQuestionText');
+      if (catBadge) catBadge.textContent = q.category;
+      if (idxBadge) idxBadge.textContent = `Soalan ${currentQuizIndex + 1} / ${quizData.length}`;
+      if (qText) qText.textContent = q.question;
+
+      const optionsContainer = document.getElementById('quizOptionsContainer');
+      const feedbackBox = document.getElementById('quizFeedbackBox');
+      const btnCheck = document.getElementById('btnCheckAnswer');
+
+      if (optionsContainer) optionsContainer.innerHTML = '';
+      if (feedbackBox) {
+        feedbackBox.className = 'hidden p-3 rounded-2xl text-xs leading-relaxed border transition-all text-left';
+        feedbackBox.innerHTML = '';
+      }
+
+      const isAnswered = answeredQuestions[currentQuizIndex] !== undefined;
+      if (btnCheck) btnCheck.disabled = true;
+      if (!isAnswered) tempSelectedOption = null;
+
+      if (optionsContainer) {
+        q.options.forEach((opt, idx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.id = 'quiz-opt-' + idx;
+
+          let style = 'w-full text-left p-3.5 rounded-2xl border text-xs sm:text-sm font-medium transition flex items-start gap-2.5 ';
+
+          if (isAnswered) {
+            if (idx === q.correct) {
+              style += 'bg-botanic-500/20 border-botanic-500 text-botanic-800 dark:text-emerald-300 font-bold';
+            } else if (idx === answeredQuestions[currentQuizIndex].chosen) {
+              style += 'bg-rose-500/20 border-rose-500 text-rose-500';
+            } else {
+              style += 'border-transparent text-slate-400 opacity-50';
+            }
+          } else {
+            style += 'app-card-nested hover:scale-[1.01]';
+          }
+
+          btn.className = style;
+          const letter = String.fromCharCode(65 + idx);
+          btn.innerHTML = `<span class="font-bold text-slate-400">${letter}.</span> <span>${opt}</span>`;
+
+          if (!isAnswered) {
+            btn.onclick = () => selectTempOption(idx);
+          }
+          optionsContainer.appendChild(btn);
+        });
+      }
+
+      if (isAnswered) {
+        showQuizFeedback(answeredQuestions[currentQuizIndex].isCorrect, q.rationale);
+      }
+      updateScoreDisplay();
+    }
+
+    function selectTempOption(idx) {
+      if (answeredQuestions[currentQuizIndex] !== undefined) return;
+      tempSelectedOption = idx;
+
+      quizData[currentQuizIndex].options.forEach((_, i) => {
+        const btn = document.getElementById('quiz-opt-' + i);
+        if (btn) {
+          if (i === idx) {
+            btn.className = 'w-full text-left p-3.5 rounded-2xl border-2 border-botanic-500 bg-botanic-500/10 font-bold text-xs sm:text-sm flex items-start gap-2.5';
+          } else {
+            btn.className = 'w-full text-left p-3.5 rounded-2xl app-card-nested text-xs sm:text-sm flex items-start gap-2.5';
+          }
+        }
+      });
+
+      const btnCheck = document.getElementById('btnCheckAnswer');
+      if (btnCheck) btnCheck.disabled = false;
+    }
+
+    function checkQuizAnswer() {
+      if (tempSelectedOption === null || answeredQuestions[currentQuizIndex] !== undefined) return;
+      const q = quizData[currentQuizIndex];
+      const isCorrect = tempSelectedOption === q.correct;
+
+      if (isCorrect) {
+        quizScore++;
+        if (window.confetti) {
+          confetti({ particleCount: 35, spread: 55, origin: { y: 0.7 } });
+        }
+      }
+
+      answeredQuestions[currentQuizIndex] = { chosen: tempSelectedOption, isCorrect };
+      localStorage.setItem('umi_quiz_progress', JSON.stringify(answeredQuestions));
+      
+      updateScoreDisplay();
+      updateAnalyticsData();
+      renderQuizQuestion();
+    }
+
+    function revealQuizAnswer() {
+      if (answeredQuestions[currentQuizIndex] !== undefined) return;
+      const q = quizData[currentQuizIndex];
+      answeredQuestions[currentQuizIndex] = { chosen: -1, isCorrect: false };
+      localStorage.setItem('umi_quiz_progress', JSON.stringify(answeredQuestions));
+      
+      updateScoreDisplay();
+      updateAnalyticsData();
+      renderQuizQuestion();
+    }
+
+    function showQuizFeedback(isCorrect, rationale) {
+      const box = document.getElementById('quizFeedbackBox');
+      if (!box) return;
+      box.classList.remove('hidden');
+      if (isCorrect) {
+        box.className = 'p-3 rounded-2xl text-xs sm:text-sm leading-relaxed border bg-botanic-500/10 border-botanic-500/30 text-botanic-800 dark:text-emerald-300 text-left';
+        box.innerHTML = `<strong>Tepat! ✅</strong> ${rationale}`;
+      } else {
+        box.className = 'p-3 rounded-2xl text-xs sm:text-sm leading-relaxed border bg-rose-500/10 border-rose-500/30 text-rose-500 text-left';
+        box.innerHTML = `<strong>Jawapan Sebenar:</strong> ${rationale}`;
+      }
+    }
+
+    function updateScoreDisplay() {
+      const answeredCount = Object.keys(answeredQuestions).length;
+      const scoreDisp = document.getElementById('quizScoreDisplay');
+      if (scoreDisp) scoreDisp.textContent = `${quizScore} / ${answeredCount}`;
+    }
+
+    function nextQuizQuestion() {
+      currentQuizIndex = (currentQuizIndex + 1) % quizData.length;
+      renderQuizQuestion();
+    }
+
+    function pickRandomQuizQuestion() {
+      currentQuizIndex = Math.floor(Math.random() * quizData.length);
+      renderQuizQuestion();
     }
 
     function jumpRandomTopic() {
-      filterByCluster('all');
+      if (currentFilterCluster !== 'all') filterByCluster('all');
       const rand = auditTopicsData[Math.floor(Math.random() * auditTopicsData.length)];
-      document.getElementById(rand.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const target = document.getElementById(rand.id);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      showToast(`Rawak: ${rand.title.split('(')[0].trim()}`);
+    }
+
+    function setFontSize(sizeKey) {
+      const body = document.getElementById('appBody');
+      if (body) {
+        body.classList.remove('font-size-sm', 'font-size-md', 'font-size-lg', 'font-size-xl');
+        body.classList.add('font-size-' + sizeKey);
+      }
+      localStorage.setItem('umi_font_scale', sizeKey);
+
+      ['sm', 'md', 'lg', 'xl'].forEach(s => {
+        const btn = document.getElementById('btnFont' + s.charAt(0).toUpperCase() + s.slice(1));
+        if (btn) {
+          if (s === sizeKey) {
+            btn.className = 'touch-target-h flex-1 py-1.5 rounded-lg text-center text-xs font-bold bg-botanic-600 text-white shadow-xs transition';
+          } else {
+            btn.className = 'touch-target-h flex-1 py-1.5 rounded-lg text-center text-xs font-medium text-slate-500 dark:text-slate-400 transition';
+          }
+        }
+      });
+      showToast(`Saiz fon: ${sizeKey.toUpperCase()}`);
+    }
+
+    function toggleSettingsDrawer() {
+      const panel = document.getElementById('settingsPanel');
+      if (panel) panel.classList.toggle('hidden');
+    }
+
+    function initTheme() {
+      const savedTheme = localStorage.getItem('umi_theme');
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+        updateThemeUI(true);
+      } else {
+        document.documentElement.classList.remove('dark');
+        updateThemeUI(false);
+      }
+      const savedFont = localStorage.getItem('umi_font_scale') || 'md';
+      setFontSize(savedFont);
+    }
+
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('umi_theme', isDark ? 'dark' : 'light');
+      updateThemeUI(isDark);
+      showToast(isDark ? "🌙 Tema Forest Night" : "☀️ Tema Warm Linen");
+    }
+
+    function updateThemeUI(isDark) {
+      const icon = document.getElementById('themeIcon');
+      if (icon) {
+        icon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+        icon.className = isDark ? 'w-4 h-4 text-amberwarm-500' : 'w-4 h-4 text-slate-700';
+        if (window.lucide) lucide.createIcons();
+      }
+    }
+
+    function toggleStealth() {
+      const sUI = document.getElementById('stealthUI');
+      const mUI = document.getElementById('mainUI');
+      if (sUI && mUI) {
+        sUI.classList.toggle('hidden');
+        mUI.classList.toggle('hidden');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+    }
+
+    function switchStealthTab(tabKey) {
+      const tabLog = document.getElementById('stealthTabLogContent');
+      const tabCalc = document.getElementById('stealthTabCalcContent');
+      const btnLog = document.getElementById('btnTabLog');
+      const btnCalc = document.getElementById('btnTabCalc');
+
+      if (tabKey === 'log') {
+        if (tabLog) tabLog.classList.remove('hidden');
+        if (tabCalc) tabCalc.classList.add('hidden');
+        if (btnLog) btnLog.className = 'touch-target-h flex-1 py-2 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 shadow-xs transition';
+        if (btnCalc) btnCalc.className = 'touch-target-h flex-1 py-2 rounded-xl text-slate-500 dark:text-slate-400 transition';
+      } else {
+        if (tabLog) tabLog.classList.add('hidden');
+        if (tabCalc) tabCalc.classList.remove('hidden');
+        if (btnCalc) btnCalc.className = 'touch-target-h flex-1 py-2 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 shadow-xs transition';
+        if (btnLog) btnLog.className = 'touch-target-h flex-1 py-2 rounded-xl text-slate-500 dark:text-slate-400 transition';
+      }
+    }
+
+    function calculateStealthTotal() {
+      const a = parseFloat(document.getElementById('stealthInputA').value) || 0;
+      const b = parseFloat(document.getElementById('stealthInputB').value) || 0;
+      const res = (a * b).toFixed(2);
+      const resElem = document.getElementById('stealthCalcResult');
+      if (resElem) resElem.textContent = `Jumlah: RM ${res}`;
+    }
+
+    let titleClicks = 0;
+    let titleTimer = null;
+    function handleTitleClicks() {
+      titleClicks++;
+      clearTimeout(titleTimer);
+      titleTimer = setTimeout(() => { titleClicks = 0; }, 700);
+      if (titleClicks >= 3) {
+        toggleStealth();
+        titleClicks = 0;
+      }
     }
 
     function salinSemuaNota() {
-      navigator.clipboard.writeText(window.location.href);
+      const text = auditTopicsData.map(d => {
+        const temp = document.createElement('div');
+        temp.innerHTML = d.bodyHtml;
+        return `${d.title.toUpperCase()}\n${temp.innerText.trim()}`;
+      }).join('\n\n====================\n\n');
+
+      const el = document.createElement('textarea');
+      el.value = "NOTA POKET UMI (MPKB-BRI)\n\n" + text;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+
+      showToast("Semua nota disalin!");
+    }
+
+    function showToast(msg) {
       const t = document.getElementById('toast');
-      t.classList.remove('opacity-0', 'pointer-events-none');
-      setTimeout(() => t.classList.add('opacity-0', 'pointer-events-none'), 1600);
+      const msgElem = document.getElementById('toastMessage');
+      if (t && msgElem) {
+        msgElem.textContent = msg;
+        t.classList.remove('opacity-0', 'pointer-events-none');
+        setTimeout(() => t.classList.add('opacity-0', 'pointer-events-none'), 1600);
+      }
     }
 
     window.onload = function() {
+      initTheme();
       renderDynamicApp();
     };
   </script>
