@@ -378,14 +378,10 @@
         <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-white/5 space-y-2">
           <span class="font-bold text-slate-700 dark:text-slate-300 block">Kiraan Anggaran Kompaun Kebersihan:</span>
           <div class="grid grid-cols-2 gap-2">
-            <input type="number" inputmode="numeric" id="stealthInputA" placeholder="Bil. Kesalahan" value="2" class="p-2.5 rounded-xl bg-white dark:bg-black/30 border border-slate-200 dark:border-slate-800">
-            <input type="number" inputmode="numeric" id="stealthInputB" placeholder="Kadar Asas (RM)" value="150" class="p-2.5 rounded-xl bg-white dark:bg-black/30 border border-slate-200 dark:border-slate-800">
+            <input type="number" inputmode="numeric" id="stealthInputA" placeholder="Bil. Kesalahan" value="2" class="p-2.5 rounded-xl bg-white dark:bg-black/30 border border-slate-200 dark:border-slate-800 text-xs">
+            <input type="number" inputmode="numeric" id="stealthInputB" placeholder="Kadar Asas (RM)" value="150" class="p-2.5 rounded-xl bg-white dark:bg-black/30 border border-slate-200 dark:border-slate-800 text-xs">
           </div>
-<<<<<<< HEAD
           <button onclick="calculateStealthTotal()" class="touch-target-h w-full py-2.5 bg-slate-800 text-white rounded-xl font-bold spring-interactive">Kira Jumlah Pengeluaran</button>
-=======
-          <button onclick="calculateStealthTotal()" class="touch-target-h w-full py-2.5 bg-slate-800 text-white rounded-xl font-bold">Kira Jumlah Pengeluaran</button>
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
           <div class="pt-2 text-center text-xs font-bold text-botanic-600 dark:text-emerald-400" id="stealthCalcResult">Jumlah: RM 300.00</div>
         </div>
       </div>
@@ -548,12 +544,8 @@
     </div>
   </div>
 
-<<<<<<< HEAD
   <!-- ==================== 4. MODALS (SPATIAL CONTINUITY EXPANSION) ==================== -->
   <!-- Modal Analisis & Prestasi -->
-=======
-  <!-- 4. MODALS (ANALISIS, CARIAN & KUIZ LENGKAP) -->
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
   <div id="analyticsModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
     <div id="analyticsModalCard" class="modal-contextual-card relative w-full max-w-lg app-card rounded-[28px] p-5 sm:p-6 space-y-4 max-h-[88vh] overflow-y-auto custom-scrollbar">
       <div class="flex items-center justify-between border-b border-emerald-900/10 dark:border-white/10 pb-3">
@@ -597,13 +589,8 @@
       </div>
 
       <div class="pt-2 flex items-center justify-between gap-2 border-t border-slate-200 dark:border-white/10">
-<<<<<<< HEAD
         <button onclick="resetAllProgress()" class="text-xs text-rose-500 hover:underline font-semibold spring-interactive">Tetapkan Semula (Reset)</button>
         <button onclick="closeAnalyticsModal(); openQuizModal();" class="px-4 py-2 bg-botanic-600 text-white rounded-xl text-xs font-bold hover:bg-botanic-500 transition flex items-center gap-1.5 shadow-xs spring-interactive">
-=======
-        <button onclick="resetAllProgress()" class="text-xs text-rose-500 hover:underline font-semibold">Tetapkan Semula (Reset)</button>
-        <button onclick="closeAnalyticsModal(); openQuizModal();" class="px-4 py-2 bg-botanic-600 text-white rounded-xl text-xs font-bold hover:bg-botanic-500 transition flex items-center gap-1.5 shadow-xs">
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
           <i data-lucide="play" class="w-3.5 h-3.5"></i> Buka Kuiz
         </button>
       </div>
@@ -630,11 +617,7 @@
     </div>
   </div>
 
-<<<<<<< HEAD
   <!-- Modal Kuiz Interaktif Penuh (23 Soalan) -->
-=======
-  <!-- MODAL KUIZ AUDIT PENUH (23 SOALAN) -->
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
   <div id="quizModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs transition-opacity duration-200 hidden opacity-0">
     <div id="quizModalCard" class="modal-contextual-card relative w-full max-w-lg app-card rounded-[28px] p-5 space-y-3.5">
       <div class="flex items-center justify-between border-b border-emerald-900/10 dark:border-white/10 pb-3">
@@ -644,11 +627,7 @@
         </div>
         <div class="flex items-center gap-2">
           <span id="quizScoreDisplay" class="text-xs font-bold text-amberwarm-500 bg-amberwarm-500/10 px-2.5 py-1 rounded-full border border-amberwarm-500/20">0 / 0</span>
-<<<<<<< HEAD
           <button onclick="closeQuizModal()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 spring-interactive"><i data-lucide="x" class="w-4 h-4"></i></button>
-=======
-          <button onclick="closeQuizModal()" class="touch-target w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500"><i data-lucide="x" class="w-4 h-4"></i></button>
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
         </div>
       </div>
 
@@ -665,21 +644,12 @@
 
       <div class="flex items-center justify-between gap-2 pt-3 border-t border-emerald-900/10 dark:border-white/10">
         <div class="flex items-center gap-2">
-<<<<<<< HEAD
           <button onclick="checkQuizAnswer(this)" id="btnCheckAnswer" class="text-xs font-bold px-4 py-2 rounded-xl bg-botanic-600 hover:bg-botanic-500 text-white transition disabled:opacity-40 shadow-xs spring-interactive">Semak</button>
           <button onclick="revealQuizAnswer(this)" id="btnRevealAnswer" class="text-xs font-semibold px-3 py-2 rounded-xl app-card text-amberwarm-500 hover:text-amberwarm-600 transition spring-interactive">Jawapan</button>
         </div>
         <div class="flex items-center gap-2">
           <button onclick="pickRandomQuizQuestion()" title="Soalan Rawak" class="w-8 h-8 rounded-xl app-card flex items-center justify-center text-slate-500 spring-interactive"><i data-lucide="shuffle" class="w-3.5 h-3.5"></i></button>
           <button onclick="nextQuizQuestion()" class="text-xs font-bold px-3.5 py-2 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 transition flex items-center gap-1 shadow-xs spring-interactive">
-=======
-          <button onclick="checkQuizAnswer()" id="btnCheckAnswer" class="text-xs font-bold px-4 py-2 rounded-xl bg-botanic-600 hover:bg-botanic-500 text-white transition disabled:opacity-40 shadow-xs">Semak</button>
-          <button onclick="revealQuizAnswer()" id="btnRevealAnswer" class="text-xs font-semibold px-3 py-2 rounded-xl app-card text-amberwarm-500 hover:text-amberwarm-600 transition">Jawapan</button>
-        </div>
-        <div class="flex items-center gap-2">
-          <button onclick="pickRandomQuizQuestion()" title="Soalan Rawak" class="w-8 h-8 rounded-xl app-card flex items-center justify-center text-slate-500"><i data-lucide="shuffle" class="w-3.5 h-3.5"></i></button>
-          <button onclick="nextQuizQuestion()" class="text-xs font-bold px-3.5 py-2 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 transition flex items-center gap-1 shadow-xs">
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
             <span>Seterusnya</span><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
           </button>
         </div>
@@ -687,11 +657,7 @@
     </div>
   </div>
 
-<<<<<<< HEAD
   <!-- ==================== 5. ENJIN SKRIP & DATA TEMPATAN ==================== -->
-=======
-  <!-- Skrip Terbina Dalam Lengkap (17 Topik & 23 Kuiz) -->
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
   <script>
     // ==================== [A] DATA 17 TOPIK NOTA LENGKAP ====================
     const auditTopicsData = [
@@ -729,10 +695,7 @@
               </div>
               <p class="text-botanic-900 dark:text-botanic-200">Kota Bharu diisytiharkan sebagai <strong>Bandar Raya Islam pada 1 Oktober 2005</strong> di bawah wawasan pentadbiran MBI bagi menterjemahkan syariat Islam dalam tadbir urus fizikal, perbandaran, sosial, dan ekonomi rakyat.</p>
             </div>
-<<<<<<< HEAD
             
-=======
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
             <div class="p-3.5 rounded-2xl app-card-nested">
               <strong class="block mb-2 text-slate-900 dark:text-slate-100 uppercase app-sub-text tracking-wide">🌟 5 Kesejahteraan Bandar Raya Islam (BRI):</strong>
               <ol class="list-decimal editorial-list text-slate-600 dark:text-slate-300 space-y-1.5">
@@ -743,10 +706,7 @@
                 <li><strong>Kesejahteraan Sosial & Keselamatan:</strong> Bandar selamat, kebajikan fakir miskin sentiasa terbela, dan perpaduan ummah.</li>
               </ol>
             </div>
-<<<<<<< HEAD
 
-=======
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
             <div class="p-3.5 rounded-2xl app-card-nested space-y-1.5">
               <strong class="block text-slate-900 dark:text-slate-100 uppercase app-sub-text mb-1">🤝 Budaya Kerja Islamik di MPKB-BRI:</strong>
               <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-1">
@@ -800,13 +760,9 @@
         bodyHtml: `
           <div class="space-y-2 editorial-body">
             <div class="p-3.5 rounded-2xl app-card-nested border-l-4 !border-l-botanic-500">
-<<<<<<< HEAD
               <span class="font-bold text-botanic-700 dark:text-emerald-300 flex items-center gap-1.5 mb-1">
                 Ubudiyyah di Pejabat:
               </span>
-=======
-              <span class="font-bold text-botanic-700 dark:text-emerald-300 flex items-center gap-1.5 mb-1">Ubudiyyah di Pejabat:</span>
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
               <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-0.5">
                 <li>Mulakan tugas harian dengan niat ikhlas ibadah kerana Allah SWT.</li>
                 <li>Menjaga solat pada waktunya serta memelihara adab syariat.</li>
@@ -814,26 +770,18 @@
               </ul>
             </div>
             <div class="p-3.5 rounded-2xl app-card-nested border-l-4 !border-l-amberwarm-500">
-<<<<<<< HEAD
               <span class="font-bold text-amberwarm-500 flex items-center gap-1.5 mb-1">
                 Mas'uliyyah di Pejabat:
               </span>
-=======
-              <span class="font-bold text-amberwarm-500 flex items-center gap-1.5 mb-1">Mas'uliyyah di Pejabat:</span>
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
               <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-0.5">
                 <li>Menepati waktu masuk, rehat, dan amanah dalam mencatat pergerakan.</li>
                 <li>Menjaga kerahsiaan fail kerajaan dan tidak menyalahgunakan aset rasmi.</li>
               </ul>
             </div>
             <div class="p-3.5 rounded-2xl app-card-nested border-l-4 !border-l-terracotta-500">
-<<<<<<< HEAD
               <span class="font-bold text-terracotta-500 flex items-center gap-1.5 mb-1">
                 Itqan di Pejabat:
               </span>
-=======
-              <span class="font-bold text-terracotta-500 flex items-center gap-1.5 mb-1">Itqan di Pejabat:</span>
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
               <ul class="list-disc editorial-list text-slate-600 dark:text-slate-300 space-y-0.5">
                 <li>Menyiapkan tugasan dengan teliti, kemas, dan sifar ralat.</li>
                 <li>Menyusun fail meja, minit mesyuarat, dan rekod perbandaran dengan teratur.</li>
@@ -1288,173 +1236,6 @@
             </table>
           </div>
         `
-<<<<<<< HEAD
-=======
-      }
-    ];
-
-    const quizData = [
-      {
-        category: "Dasar BRI",
-        question: "Bilakah tarikh rasmi pengisytiharan Kota Bharu sebagai Bandar Raya Islam (BRI)?",
-        options: ["1 Oktober 2005", "1 Januari 2000", "1 Julai 2010", "31 Ogos 1990"],
-        correct: 0,
-        rationale: "Kota Bharu telah diisytiharkan secara rasmi sebagai Bandar Raya Islam pada 1 Oktober 2005 di bawah dasar pentadbiran Membangun Bersama Islam (MBI)."
-      },
-      {
-        category: "Dasar BRI",
-        question: "Antara berikut, manakah BUKAN dalam senarai Lima Kesejahteraan Bandar Raya Islam (BRI)?",
-        options: ["Kesejahteraan Hiburan Bebas", "Kesejahteraan Akidah", "Kesejahteraan Akhlak", "Kesejahteraan Kesihatan & Kebersihan"],
-        correct: 0,
-        rationale: "5 Kesejahteraan BRI merangkumi Kesejahteraan Akidah, Akhlak, Kesihatan & Kebersihan, Ekonomi, serta Sosial & Keselamatan."
-      },
-      {
-        category: "Dasar UMI",
-        question: "Bilakah gagasan dasar Membangun Bersama Islam (MBI) yang melahirkan konsep UMI mula diperkenalkan di Kelantan?",
-        options: ["Tahun 1990 di bawah pimpinan Tok Guru Nik Abdul Aziz", "Tahun 2000 sempena deklarasi Bandar Raya Islam", "Tahun 2020 melalui penerbitan Manual Pelaksanaan", "Tahun 1985 sebagai modul latihan awam"],
-        correct: 0,
-        rationale: "Dasar MBI diasaskan pada tahun 1990 oleh Almarhum Tok Guru Nik Aziz, manakala Manual Pelaksanaan Prinsip UMI dikuatkuasakan pada tahun 2020."
-      },
-      {
-        category: "Teras UMI",
-        question: "Seorang pegawai majlis sentiasa memastikan dokumen lesen disemak tanpa ralat (zero defect) dan fail disusun teratur. Apakah prinsip UMI yang diamalkan?",
-        options: ["Itqan", "Ubudiyyah", "Mas'uliyyah", "Syura"],
-        correct: 0,
-        rationale: "Itqan bermaksud ketelitian, kekemasan, kualiti tinggi, dan sifar ralat dalam melakukan setiap pekerjaan."
-      },
-      {
-        category: "Teras UMI",
-        question: "Menjaga amanah kenderaan jabatan dan tidak menggunakannya untuk urusan peribadi mencerminkan penghayatan teras:",
-        options: ["Mas'uliyyah", "Ubudiyyah", "Itqan", "Tawaduk"],
-        correct: 0,
-        rationale: "Mas'uliyyah membawa maksud kebertanggungjawaban, akauntabiliti, dan menjaga amanah aset kerajaan kerana sedar akan dihisab."
-      },
-      {
-        category: "Integriti",
-        question: "Apakah status hukum bagi seorang kakitangan yang membuat tuntutan elaun perjalanan palsu (false claims)?",
-        options: ["Haram dan merupakan perbuatan khianat", "Makruh selagi wang digunakan untuk kebajikan", "Syubhah yang dimaafkan majlis", "Mubah jika dipersetujui rakan sekerja"],
-        correct: 0,
-        rationale: "Tuntutan palsu adalah penipuan harta awam yang haram dan mencemarkan integriti keberkatan rezeki penjawat awam."
-      },
-      {
-        category: "Sifat Rasul",
-        question: "Sifat wajib bagi Rasul yang membawa erti 'Bijaksana' dalam menyelesaikan masalah dan aduan rakyat ialah:",
-        options: ["Fatanah", "Siddiq", "Amanah", "Tabligh"],
-        correct: 0,
-        rationale: "Fatanah bermaksud bijaksana. Sifat lawannya yang mustahil adalah Baladah (bebal/bodoh)."
-      },
-      {
-        category: "Fiqh Solat Lanjutan",
-        question: "Sekiranya seseorang terlupa membaca Doa Qunut semasa solat Subuh, apakah yang disunatkan untuk menampung kekurangan tersebut?",
-        options: ["Melakukan Sujud Sahwi sebelum salam", "Mengulangi semula solat dari awal", "Membayar fidyah solat", "Melakukan Sujud Tilawah"],
-        correct: 0,
-        rationale: "Doa Qunut Subuh adalah Sunat Ab'adh. Sekiranya tertinggal, disunatkan melakukan Sujud Sahwi 2 kali sebelum memberi salam."
-      },
-      {
-        category: "Fiqh Solat Lanjutan",
-        question: "Antara berikut, manakah perbuatan yang MEMBATALKAN solat?",
-        options: ["Bergerak 3 kali berturut-turut anggota besar", "Mengelipkan mata beberapa kali kerana pedih", "Menggerakkan jari tangan ketika bertasbih", "Menundukkan pandangan ke tempat sujud"],
-        correct: 0,
-        rationale: "Pergerakan 3 kali berturut-turut anggota besar (kaki, tangan, badan) membatalkan solat menurut mazhab Syafi'i."
-      },
-      {
-        category: "Bahagian Air",
-        question: "Air yang telah digunakan untuk membasuh wuduk fardhu yang kurang daripada 2 kolah dikategorikan sebagai:",
-        options: ["Air Musta'mal (suci tetapi tidak menyucikan)", "Air Mutlak (suci dan menyucikan)", "Air Mutanajjis (air najis)", "Air Musyammas (air panas matahari)"],
-        correct: 0,
-        rationale: "Air Musta'mal adalah air yang suci pada zatnya tetapi tidak boleh digunakan lagi untuk mengangkat hadas kali kedua."
-      },
-      {
-        category: "Tayamum",
-        question: "Berapakah bilangan anggota wajib yang disapu semasa bertayamum dengan debu tanah?",
-        options: ["2 anggota sahaja (Muka dan dua tangan hingga siku)", "4 anggota mengikut rukun wuduk", "Seluruh anggota badan termasuk kaki", "Muka dan kepala sahaja"],
-        correct: 0,
-        rationale: "Anggota tayamum hanyalah dua iaitu menyapu muka dan menyapu kedua-dua belah tangan hingga ke siku."
-      },
-      {
-        category: "Hafazan & Bacaan",
-        question: "Surah Al-Asr menekankan bahawa semua manusia berada dalam kerugian melainkan mereka yang menjaga amanah:",
-        options: ["Masa, beriman, beramal soleh & saling berpesan", "Mengumpul kekayaan demi keluarga", "Membina bangunan perbandaran yang megah", "Berpuasa sunat setiap hari"],
-        correct: 0,
-        rationale: "Surah Al-Asr menjadi pasak penghayatan masa (Mas'uliyyah) bahawa seluruh insan rugi melainkan yang beriman dan beramal soleh."
-      },
-      {
-        category: "Fardhu Ain vs Kifayah",
-        question: "Antara berikut, amalan manakah yang tergolong dalam kategori Fardhu Kifayah?",
-        options: ["Solat jenazah secara berjemaah", "Menunaikan solat lima waktu setiap hari", "Berpuasa penuh pada bulan Ramadan", "Menutup aurat ketika berada di tempat awam"],
-        correct: 0,
-        rationale: "Solat jenazah ialah Fardhu Kifayah; kewajipan gugur ke atas orang lain sekiranya ada sebahagian masyarakat yang melaksanakannya."
-      },
-      {
-        category: "Surah Al-Fatihah",
-        question: "Ayat ke-5 Surah Al-Fatihah iaitu 'Iyyaka na'budu wa-iyyaka nasta'in' membawa pengajaran utama tentang:",
-        options: ["Teras Ubudiyyah dan pergantungan mutlak kepada Allah", "Hari pembalasan dan kebangkitan semula", "Kisah orang terdahulu yang dimurkai", "Pemberian rezeki dan nikmat duniawi"],
-        correct: 0,
-        rationale: "Ayat ini bermaksud 'Hanya Engkau yang kami sembah dan hanya kepada Engkau kami mohon pertolongan' yang merupakan pasak tauhid dan Ubudiyyah."
-      },
-      {
-        category: "Tajwid",
-        question: "Pertemuan huruf Nun Mati (نْ) dengan huruf Ba (ب) dalam bacaan Al-Quran menghasilkan hukum:",
-        options: ["Iqlab (menukar bunyi nun kepada mim serta dengung)", "Izhar Halqi (membaca dengan jelas tanpa dengung)", "Idgham Bila Ghunnah (memasukkan bunyi tanpa dengung)", "Ikhfa' Syafawi (menyembunyikan bunyi bibir)"],
-        correct: 0,
-        rationale: "Iqlab berlaku apabila nun mati atau tanwin bertemu huruf Ba (ب), di mana bunyi nun ditukar kepada mim berserta dengung 2 harakat."
-      },
-      {
-        category: "Tajwid",
-        question: "Huruf-huruf Qalqalah (lantunan bunyi) terkumpul dalam kalimah:",
-        options: ["ق ط ب ج د (Baju Di Kotoq)", "ي ن م و (Yanmu)", "ء هـ ع ح غ خ (Huruf Halqi)", "ل ر (Huruf Idgham Bila Ghunnah)"],
-        correct: 0,
-        rationale: "Huruf Qalqalah ada 5 iaitu Qaf (ق), Tha (ط), Ba (ب), Jim (ج), dan Dal (د)."
-      },
-      {
-        category: "Munakahat",
-        question: "Antara berikut, yang manakah merupakan tanggungjawab nafkah zahir bagi seorang suami?",
-        options: ["Menyediakan tempat tinggal selamat, pakaian dan makan minum", "Mentaati segala arahan isteri tanpa syarat", "Memohon izin daripada isteri sebelum bekerja", "Membayar puasa ganti bagi pihak isteri"],
-        correct: 0,
-        rationale: "Nafkah zahir yang wajib disediakan oleh suami merangkumi makanan, pakaian, tempat tinggal yang selamat, dan perubatan."
-      },
-      {
-        category: "Rukun Islam & Iman",
-        question: "Percaya kepada Qada' dan Qadar merupakan rukun ke berapa dalam Rukun Iman?",
-        options: ["Rukun Iman ke-6", "Rukun Iman ke-5", "Rukun Islam ke-4", "Rukun Iman ke-4"],
-        correct: 0,
-        rationale: "Rukun Iman ada 6 perkara, dan yang ke-6 ialah percaya kepada ketentuan Qada' dan Qadar Allah SWT."
-      },
-      {
-        category: "Taharah (Wuduk)",
-        question: "Manakah antara berikut BUKAN daripada 6 rukun wuduk?",
-        options: ["Membasuh telinga", "Niat ketika membasuh muka", "Membasuh kedua-dua tangan hingga siku", "Tertib mengikut susunan"],
-        correct: 0,
-        rationale: "Membasuh telinga adalah amalan SUNAT wuduk, bukan rukun wajib wuduk yang terdiri daripada 6 perkara."
-      },
-      {
-        category: "Taharah (Mandi Wajib)",
-        question: "Berapakah bilangan rukun mandi wajib menurut mazhab Syafi'i?",
-        options: ["3 rukun (Niat, buang najis 'aini, ratakan air ke seluruh badan & bulu)", "6 rukun mengikut urutan tertib wuduk", "5 rukun termasuk berkumur-kumur", "2 rukun sahaja iaitu niat dan basuh kepala"],
-        correct: 0,
-        rationale: "Rukun mandi wajib ada 3 perkara utama: Niat hadas besar, menghilangkan najis 'aini, dan meratakan air ke seluruh badan serta bulu-bulu."
-      },
-      {
-        category: "Rukun Solat",
-        question: "Membaca Surah Al-Fatihah dalam solat diklasifikasikan di bawah kategori rukun:",
-        options: ["Rukun Qauli (Bacaan yang wajib didengar sendiri)", "Rukun Fi'li (Perbuatan anggota badan)", "Rukun Qalbi (Lintasan dalam hati)", "Rukun Ma'nawi (Peraturan susunan)"],
-        correct: 0,
-        rationale: "Al-Fatihah, Takbiratul Ihram, Tahiyyat Akhir, Selawat atas Nabi, dan Salam Pertama ialah Rukun Qauli."
-      },
-      {
-        category: "Najis",
-        question: "Bagaimanakah kaedah menyucikan Najis Mukhaffafah (kencing bayi lelaki < 2 tahun yang hanya minum susu ibu)?",
-        options: ["Lap sisa kencing, kemudian renjis/percik air mutlak hingga rata", "Membasuh 7 kali dengan salah satunya air tanah", "Mengalirkan air sabun hingga hilang bau dan rasa", "Cukup dengan membiarkannya kering ditiup angin"],
-        correct: 0,
-        rationale: "Najis Mukhaffafah disucikan dengan membuang sisa cairan, kemudian merenjiskan air mutlak ke seluruh tempat tersebut."
-      },
-      {
-        category: "Najis",
-        question: "Najis Mughallazah (anjing dan babi) wajib disucikan dengan cara:",
-        options: ["7 kali basuhan air mutlak dan salah satu daripadanya air bercampur tanah bersih", "3 kali basuhan air sabun dan dibilas air mutlak", "1 kali basuhan asalkan hilang bau, warna dan rasa", "Menyembur minyak wangi ke atas najis"],
-        correct: 0,
-        rationale: "Najis Mughallazah wajib dibersihkan fizikal najisnya, kemudian dibasuh 7 kali basuhan air mutlak dengan salah satu daripadanya air tanah suci."
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
       }
     ];
 
@@ -1627,7 +1408,6 @@
     let readProgressState = JSON.parse(localStorage.getItem('umi_read_progress') || '{}');
     let quizProgressState = JSON.parse(localStorage.getItem('umi_quiz_progress') || '{}');
 
-<<<<<<< HEAD
     function triggerHaptic(duration = 15) {
       if (typeof navigator !== 'undefined' && navigator.vibrate) {
         try { navigator.vibrate(duration); } catch (_) {}
@@ -1657,11 +1437,6 @@
         });
       }
 
-=======
-    function toggleTopicCompleted(id) {
-      readProgressState[id] = !readProgressState[id];
-      localStorage.setItem('umi_read_progress', JSON.stringify(readProgressState));
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
       updateReadingUI();
       updateAnalyticsData();
     }
@@ -1672,17 +1447,10 @@
         const btn = document.getElementById('btnDone-' + topic.id);
         if (btn) {
           if (isDone) {
-<<<<<<< HEAD
             btn.className = "touch-target-h px-3.5 py-2 rounded-full text-xs font-bold bg-botanic-600 text-white flex items-center gap-1.5 shadow-xs spring-interactive";
             btn.innerHTML = `<i data-lucide="check-check" class="w-4 h-4"></i> Selesai`;
           } else {
             btn.className = "touch-target-h px-3.5 py-2 rounded-full text-xs font-medium app-card-nested text-slate-500 hover:text-slate-700 flex items-center gap-1.5 spring-interactive";
-=======
-            btn.className = "touch-target-h px-3.5 py-2 rounded-full text-xs font-bold bg-botanic-600 text-white flex items-center gap-1.5 shadow-xs transition";
-            btn.innerHTML = `<i data-lucide="check-check" class="w-4 h-4"></i> Selesai`;
-          } else {
-            btn.className = "touch-target-h px-3.5 py-2 rounded-full text-xs font-medium app-card-nested text-slate-500 hover:text-slate-700 flex items-center gap-1.5 transition";
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
             btn.innerHTML = `<i data-lucide="circle" class="w-4 h-4"></i> Tandai Selesai`;
           }
         }
@@ -1693,11 +1461,7 @@
     function updateAnalyticsData() {
       const totalTopics = auditTopicsData.length;
       const readCount = Object.values(readProgressState).filter(Boolean).length;
-<<<<<<< HEAD
       const readPercent = totalTopics > 0 ? Math.round((readCount / totalTopics) * 100) : 0;
-=======
-      const readPercent = Math.round((readCount / totalTopics) * 100) || 0;
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
 
       const heroProg = document.getElementById('heroProgressPercent');
       if (heroProg) heroProg.textContent = `${readPercent}%`;
@@ -1718,15 +1482,9 @@
       });
 
       const unansweredCount = totalQuiz - answeredKeys.length;
-<<<<<<< HEAD
       const pctCorrect = totalQuiz > 0 ? (correctCount / totalQuiz) * 100 : 0;
       const pctWrong = totalQuiz > 0 ? (wrongCount / totalQuiz) * 100 : 0;
       const pctUnanswered = totalQuiz > 0 ? (unansweredCount / totalQuiz) * 100 : 100;
-=======
-      const pctCorrect = (correctCount / totalQuiz) * 100;
-      const pctWrong = (wrongCount / totalQuiz) * 100;
-      const pctUnanswered = (unansweredCount / totalQuiz) * 100;
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
 
       const bCorrect = document.getElementById('barCorrect');
       const bWrong = document.getElementById('barWrong');
@@ -1776,10 +1534,7 @@
       }
     }
 
-<<<<<<< HEAD
     // ==================== [D] RENDERING DINAMIK NOTA ====================
-=======
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
     let currentFilterCluster = 'all';
     let fuseSearchEngine = null;
 
@@ -1805,11 +1560,7 @@
 
         const isHidden = (currentFilterCluster !== 'all' && topic.cluster !== currentFilterCluster) ? 'hidden' : '';
         contentHtml += `
-<<<<<<< HEAD
           <section id="${topic.id}" data-cluster="${topic.cluster}" class="note-section app-card rounded-[26px] p-4 sm:p-5 scroll-mt-28 transition-all duration-300 ${isHidden}">
-=======
-          <section id="${topic.id}" data-cluster="${topic.cluster}" class="note-section app-card rounded-[26px] p-4 sm:p-5 scroll-mt-28 transition-all ${isHidden}">
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
             <div class="flex items-center justify-between mb-3.5 border-b border-emerald-900/10 dark:border-white/10 pb-3">
               <div class="flex items-center gap-2.5">
                 <div class="w-9 h-9 rounded-2xl bg-botanic-500/10 text-botanic-600 dark:text-emerald-400 flex items-center justify-center">
@@ -1824,11 +1575,7 @@
 
             <div class="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
               <span class="app-sub-text text-slate-400">Status Semakan Topik:</span>
-<<<<<<< HEAD
               <button onclick="toggleTopicCompleted('${topic.id}', this)" id="btnDone-${topic.id}" class="touch-target-h px-3.5 py-2 rounded-full text-xs font-medium app-card-nested text-slate-500 hover:text-slate-700 flex items-center gap-1.5 spring-interactive">
-=======
-              <button onclick="toggleTopicCompleted('${topic.id}')" id="btnDone-${topic.id}" class="touch-target-h px-3.5 py-2 rounded-full text-xs font-medium app-card-nested text-slate-500 hover:text-slate-700 flex items-center gap-1.5 transition">
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
                 <i data-lucide="circle" class="w-4 h-4"></i> Tandai Selesai
               </button>
             </div>
@@ -1843,41 +1590,11 @@
       initFuzzySearch();
       updateReadingUI();
       updateAnalyticsData();
-<<<<<<< HEAD
       
       setTimeout(() => {
         const activeChip = document.getElementById('chip-all');
         if (activeChip) moveSlidingPill(activeChip);
       }, 100);
-=======
-    }
-
-    function openNavDrawer() {
-      const drawer = document.getElementById('navDrawer');
-      const overlay = document.getElementById('navDrawerOverlay');
-      if (overlay) overlay.classList.remove('opacity-0', 'pointer-events-none');
-      if (drawer) drawer.classList.remove('-translate-x-full');
-    }
-
-    function closeNavDrawer() {
-      const drawer = document.getElementById('navDrawer');
-      const overlay = document.getElementById('navDrawerOverlay');
-      if (overlay) overlay.classList.add('opacity-0', 'pointer-events-none');
-      if (drawer) drawer.classList.add('-translate-x-full');
-    }
-
-    function handleDrawerClick(id) {
-      closeNavDrawer();
-      if (currentFilterCluster !== 'all') {
-        filterByCluster('all');
-      }
-      setTimeout(() => {
-        const target = document.getElementById(id);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 200);
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
     }
 
     // ==================== [E] SLIDING PILL & CONTEXTUAL EXPANSION ====================
@@ -1907,17 +1624,11 @@
         btn.classList.add('text-slate-600', 'dark:text-slate-300', 'font-medium');
       });
 
-<<<<<<< HEAD
       const activeBtn = triggerBtn || document.getElementById('chip-' + clusterKey);
       if (activeBtn) {
         activeBtn.classList.remove('text-slate-600', 'dark:text-slate-300', 'font-medium');
         activeBtn.classList.add('text-white', 'dark:text-slate-900', 'font-bold');
         moveSlidingPill(activeBtn);
-=======
-      const activeChip = document.getElementById('chip-' + clusterKey);
-      if (activeChip) {
-        activeChip.className = 'cluster-chip touch-target-h shrink-0 px-4 py-2 rounded-full font-semibold bg-botanic-600 text-white shadow-sm transition';
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
       }
 
       document.querySelectorAll('.note-section').forEach(sec => {
@@ -1931,7 +1642,6 @@
       showToast(`Paparan: ${clusterKey.toUpperCase()}`);
     }
 
-<<<<<<< HEAD
     function openModalContextual(modalId, cardId, triggerEvent) {
       const modal = document.getElementById(modalId);
       const card = document.getElementById(cardId);
@@ -2072,76 +1782,6 @@
       }
     }
 
-=======
-    function openAnalyticsModal() {
-      updateAnalyticsData();
-      const modal = document.getElementById('analyticsModal');
-      const card = document.getElementById('analyticsModalCard');
-      if (modal && card) {
-        modal.classList.remove('hidden');
-        setTimeout(() => {
-          modal.classList.remove('opacity-0');
-          card.classList.remove('scale-95');
-        }, 10);
-      }
-    }
-
-    function closeAnalyticsModal() {
-      const modal = document.getElementById('analyticsModal');
-      const card = document.getElementById('analyticsModalCard');
-      if (modal && card) {
-        modal.classList.add('opacity-0');
-        card.classList.add('scale-95');
-        setTimeout(() => { modal.classList.add('hidden'); }, 200);
-      }
-    }
-
-    function initFuzzySearch() {
-      const searchableItems = auditTopicsData.map(topic => {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = topic.bodyHtml;
-        return {
-          id: topic.id,
-          cluster: topic.cluster,
-          title: topic.title,
-          text: tempDiv.textContent || tempDiv.innerText || ''
-        };
-      });
-
-      if (typeof Fuse !== 'undefined') {
-        fuseSearchEngine = new Fuse(searchableItems, {
-          keys: ['title', 'text'],
-          threshold: 0.35,
-          ignoreLocation: true
-        });
-      }
-    }
-
-    function openSearchModal() {
-      const modal = document.getElementById('searchModal');
-      const card = document.getElementById('searchModalCard');
-      const input = document.getElementById('searchInput');
-      if (modal && card && input) {
-        modal.classList.remove('hidden');
-        setTimeout(() => {
-          modal.classList.remove('opacity-0');
-          card.classList.remove('scale-95');
-          input.focus();
-        }, 10);
-      }
-    }
-
-    function closeSearchModal() {
-      const modal = document.getElementById('searchModal');
-      const card = document.getElementById('searchModalCard');
-      if (modal && card) {
-        modal.classList.add('opacity-0');
-        card.classList.add('scale-95');
-        setTimeout(() => { modal.classList.add('hidden'); }, 200);
-      }
-    }
-
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
     function executeFuzzySearch(query) {
       const q = query.trim();
       const resultsContainer = document.getElementById('searchResultsList');
@@ -2155,10 +1795,7 @@
       const results = fuseSearchEngine ? fuseSearchEngine.search(q) : [];
       if (results.length === 0) {
         resultsContainer.innerHTML = `<div class="text-center py-8 text-slate-400">Tiada padanan untuk "${query}".</div>`;
-<<<<<<< HEAD
         triggerSemanticError('searchInput');
-=======
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
         return;
       }
 
@@ -2166,11 +1803,7 @@
       results.slice(0, 6).forEach(res => {
         const item = res.item;
         html += `
-<<<<<<< HEAD
           <button type="button" onclick="jumpToSearchResult('${item.id}')" class="touch-target-h w-full text-left p-3.5 rounded-2xl app-card-nested hover:scale-[1.01] spring-interactive">
-=======
-          <button type="button" onclick="jumpToSearchResult('${item.id}')" class="touch-target-h w-full text-left p-3.5 rounded-2xl app-card-nested hover:scale-[1.01] transition">
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
             <span class="font-bold app-note-heading text-botanic-600 dark:text-emerald-400 block">${item.title}</span>
             <span class="app-sub-text text-slate-500">Tekan untuk melompat ke bahagian ini ➔</span>
           </button>
@@ -2188,10 +1821,7 @@
       }, 200);
     }
 
-<<<<<<< HEAD
     // ==================== [H] ENJIN KUIZ AUDIT ====================
-=======
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
     let currentQuizIndex = 0;
     let quizScore = 0;
     let answeredQuestions = quizProgressState || {};
@@ -2201,35 +1831,7 @@
       if (ans.isCorrect) quizScore++;
     });
 
-<<<<<<< HEAD
     function renderQuizQuestion() {
-=======
-    function openQuizModal() {
-      const modal = document.getElementById('quizModal');
-      const card = document.getElementById('quizModalCard');
-      if (modal && card) {
-        modal.classList.remove('hidden');
-        setTimeout(() => {
-          modal.classList.remove('opacity-0');
-          card.classList.remove('scale-95');
-        }, 10);
-        renderQuizQuestion();
-      }
-    }
-
-    function closeQuizModal() {
-      const modal = document.getElementById('quizModal');
-      const card = document.getElementById('quizModalCard');
-      if (modal && card) {
-        modal.classList.add('opacity-0');
-        card.classList.add('scale-95');
-        setTimeout(() => { modal.classList.add('hidden'); }, 200);
-      }
-    }
-
-    function renderQuizQuestion() {
-      if (quizData.length === 0) return;
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
       const q = quizData[currentQuizIndex];
       const catBadge = document.getElementById('quizCategoryBadge');
       const idxBadge = document.getElementById('quizIndexBadge');
@@ -2258,11 +1860,7 @@
           btn.type = 'button';
           btn.id = 'quiz-opt-' + idx;
 
-<<<<<<< HEAD
           let style = 'w-full text-left p-3.5 rounded-2xl border text-xs sm:text-sm font-medium spring-interactive flex items-start gap-2.5 ';
-=======
-          let style = 'w-full text-left p-3.5 rounded-2xl border text-xs sm:text-sm font-medium transition flex items-start gap-2.5 ';
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
 
           if (isAnswered) {
             if (idx === q.correct) {
@@ -2281,11 +1879,7 @@
           btn.innerHTML = `<span class="font-bold text-slate-400">${letter}.</span> <span>${opt}</span>`;
 
           if (!isAnswered) {
-<<<<<<< HEAD
             btn.onclick = () => selectTempOption(idx, btn);
-=======
-            btn.onclick = () => selectTempOption(idx);
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
           }
           optionsContainer.appendChild(btn);
         });
@@ -2297,32 +1891,19 @@
       updateScoreDisplay();
     }
 
-<<<<<<< HEAD
     function selectTempOption(idx, btnElement) {
       if (answeredQuestions[currentQuizIndex] !== undefined) return;
       tempSelectedOption = idx;
 
       if (btnElement) triggerTactilePop(btnElement);
 
-=======
-    function selectTempOption(idx) {
-      if (answeredQuestions[currentQuizIndex] !== undefined) return;
-      tempSelectedOption = idx;
-
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
       quizData[currentQuizIndex].options.forEach((_, i) => {
         const btn = document.getElementById('quiz-opt-' + i);
         if (btn) {
           if (i === idx) {
-<<<<<<< HEAD
             btn.className = 'w-full text-left p-3.5 rounded-2xl border-2 border-botanic-500 bg-botanic-500/10 font-bold text-xs sm:text-sm flex items-start gap-2.5 spring-interactive';
           } else {
             btn.className = 'w-full text-left p-3.5 rounded-2xl app-card-nested text-xs sm:text-sm flex items-start gap-2.5 spring-interactive';
-=======
-            btn.className = 'w-full text-left p-3.5 rounded-2xl border-2 border-botanic-500 bg-botanic-500/10 font-bold text-xs sm:text-sm flex items-start gap-2.5';
-          } else {
-            btn.className = 'w-full text-left p-3.5 rounded-2xl app-card-nested text-xs sm:text-sm flex items-start gap-2.5';
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
           }
         }
       });
@@ -2331,30 +1912,20 @@
       if (btnCheck) btnCheck.disabled = false;
     }
 
-<<<<<<< HEAD
     function checkQuizAnswer(btnElement) {
-=======
-    function checkQuizAnswer() {
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
       if (tempSelectedOption === null || answeredQuestions[currentQuizIndex] !== undefined) return;
       const q = quizData[currentQuizIndex];
       const isCorrect = tempSelectedOption === q.correct;
 
-<<<<<<< HEAD
       if (btnElement) triggerTactilePop(btnElement);
 
-=======
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
       if (isCorrect) {
         quizScore++;
         if (window.confetti) {
           confetti({ particleCount: 35, spread: 55, origin: { y: 0.7 } });
         }
-<<<<<<< HEAD
       } else {
         triggerSemanticError('quizOptionsContainer');
-=======
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
       }
 
       answeredQuestions[currentQuizIndex] = { chosen: tempSelectedOption, isCorrect };
@@ -2365,17 +1936,11 @@
       renderQuizQuestion();
     }
 
-<<<<<<< HEAD
     function revealQuizAnswer(btnElement) {
       if (answeredQuestions[currentQuizIndex] !== undefined) return;
       const q = quizData[currentQuizIndex];
       if (btnElement) triggerTactilePop(btnElement);
 
-=======
-    function revealQuizAnswer() {
-      if (answeredQuestions[currentQuizIndex] !== undefined) return;
-      const q = quizData[currentQuizIndex];
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
       answeredQuestions[currentQuizIndex] = { chosen: -1, isCorrect: false };
       localStorage.setItem('umi_quiz_progress', JSON.stringify(answeredQuestions));
       
@@ -2405,19 +1970,13 @@
 
     function nextQuizQuestion() {
       currentQuizIndex = (currentQuizIndex + 1) % quizData.length;
-<<<<<<< HEAD
       triggerHaptic(12);
-=======
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
       renderQuizQuestion();
     }
 
     function pickRandomQuizQuestion() {
       currentQuizIndex = Math.floor(Math.random() * quizData.length);
-<<<<<<< HEAD
       triggerHaptic(15);
-=======
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
       renderQuizQuestion();
     }
 
@@ -2425,7 +1984,6 @@
       if (currentFilterCluster !== 'all') filterByCluster('all');
       const rand = auditTopicsData[Math.floor(Math.random() * auditTopicsData.length)];
       const target = document.getElementById(rand.id);
-<<<<<<< HEAD
       if (target) {
         triggerHaptic(20);
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -2548,117 +2106,6 @@
     function salinSemuaNota(triggerBtn) {
       if (triggerBtn) triggerTactilePop(triggerBtn);
 
-=======
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      showToast(`Rawak: ${rand.title.split('(')[0].trim()}`);
-    }
-
-    function setFontSize(sizeKey) {
-      const body = document.getElementById('appBody');
-      if (body) {
-        body.classList.remove('font-size-sm', 'font-size-md', 'font-size-lg', 'font-size-xl');
-        body.classList.add('font-size-' + sizeKey);
-      }
-      localStorage.setItem('umi_font_scale', sizeKey);
-
-      ['sm', 'md', 'lg', 'xl'].forEach(s => {
-        const btn = document.getElementById('btnFont' + s.charAt(0).toUpperCase() + s.slice(1));
-        if (btn) {
-          if (s === sizeKey) {
-            btn.className = 'touch-target-h flex-1 py-1.5 rounded-lg text-center text-xs font-bold bg-botanic-600 text-white shadow-xs transition';
-          } else {
-            btn.className = 'touch-target-h flex-1 py-1.5 rounded-lg text-center text-xs font-medium text-slate-500 dark:text-slate-400 transition';
-          }
-        }
-      });
-      showToast(`Saiz fon: ${sizeKey.toUpperCase()}`);
-    }
-
-    function toggleSettingsDrawer() {
-      const panel = document.getElementById('settingsPanel');
-      if (panel) panel.classList.toggle('hidden');
-    }
-
-    function initTheme() {
-      const savedTheme = localStorage.getItem('umi_theme');
-      if (savedTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-        updateThemeUI(true);
-      } else {
-        document.documentElement.classList.remove('dark');
-        updateThemeUI(false);
-      }
-      const savedFont = localStorage.getItem('umi_font_scale') || 'md';
-      setFontSize(savedFont);
-    }
-
-    function toggleTheme() {
-      const isDark = document.documentElement.classList.toggle('dark');
-      localStorage.setItem('umi_theme', isDark ? 'dark' : 'light');
-      updateThemeUI(isDark);
-      showToast(isDark ? "🌙 Tema Forest Night" : "☀️ Tema Warm Linen");
-    }
-
-    function updateThemeUI(isDark) {
-      const icon = document.getElementById('themeIcon');
-      if (icon) {
-        icon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
-        icon.className = isDark ? 'w-4 h-4 text-amberwarm-500' : 'w-4 h-4 text-slate-700';
-        if (window.lucide) lucide.createIcons();
-      }
-    }
-
-    function toggleStealth() {
-      const sUI = document.getElementById('stealthUI');
-      const mUI = document.getElementById('mainUI');
-      if (sUI && mUI) {
-        sUI.classList.toggle('hidden');
-        mUI.classList.toggle('hidden');
-        window.scrollTo({ top: 0, behavior: 'instant' });
-      }
-    }
-
-    function switchStealthTab(tabKey) {
-      const tabLog = document.getElementById('stealthTabLogContent');
-      const tabCalc = document.getElementById('stealthTabCalcContent');
-      const btnLog = document.getElementById('btnTabLog');
-      const btnCalc = document.getElementById('btnTabCalc');
-
-      if (tabKey === 'log') {
-        if (tabLog) tabLog.classList.remove('hidden');
-        if (tabCalc) tabCalc.classList.add('hidden');
-        if (btnLog) btnLog.className = 'touch-target-h flex-1 py-2 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 shadow-xs transition';
-        if (btnCalc) btnCalc.className = 'touch-target-h flex-1 py-2 rounded-xl text-slate-500 dark:text-slate-400 transition';
-      } else {
-        if (tabLog) tabLog.classList.add('hidden');
-        if (tabCalc) tabCalc.classList.remove('hidden');
-        if (btnCalc) btnCalc.className = 'touch-target-h flex-1 py-2 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 shadow-xs transition';
-        if (btnLog) btnLog.className = 'touch-target-h flex-1 py-2 rounded-xl text-slate-500 dark:text-slate-400 transition';
-      }
-    }
-
-    function calculateStealthTotal() {
-      const a = parseFloat(document.getElementById('stealthInputA').value) || 0;
-      const b = parseFloat(document.getElementById('stealthInputB').value) || 0;
-      const res = (a * b).toFixed(2);
-      const resElem = document.getElementById('stealthCalcResult');
-      if (resElem) resElem.textContent = `Jumlah: RM ${res}`;
-    }
-
-    let titleClicks = 0;
-    let titleTimer = null;
-    function handleTitleClicks() {
-      titleClicks++;
-      clearTimeout(titleTimer);
-      titleTimer = setTimeout(() => { titleClicks = 0; }, 700);
-      if (titleClicks >= 3) {
-        toggleStealth();
-        titleClicks = 0;
-      }
-    }
-
-    function salinSemuaNota() {
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
       const text = auditTopicsData.map(d => {
         const temp = document.createElement('div');
         temp.innerHTML = d.bodyHtml;
@@ -2681,7 +2128,6 @@
       if (t && msgElem) {
         msgElem.textContent = msg;
         t.classList.remove('opacity-0', 'pointer-events-none');
-<<<<<<< HEAD
         t.style.transform = 'translate(-50%, 6px) scale(1.02)';
         setTimeout(() => {
           t.style.transform = 'translate(-50%, 0) scale(1)';
@@ -2690,9 +2136,6 @@
         setTimeout(() => {
           t.classList.add('opacity-0', 'pointer-events-none');
         }, 1600);
-=======
-        setTimeout(() => t.classList.add('opacity-0', 'pointer-events-none'), 1600);
->>>>>>> 5415b3714929a7850407aa6aa9ea1c265d8e4f67
       }
     }
 
